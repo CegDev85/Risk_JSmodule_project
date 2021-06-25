@@ -3,7 +3,7 @@ import React from 'react'
 const WelcomeContainer = () => {
     return (
         <div>
-            <h2>Planet Earth</h2>
+            <h2>this is the welcome container</h2>
             
         </div>
     )
