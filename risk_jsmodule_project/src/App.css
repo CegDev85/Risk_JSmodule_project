@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+#us-ca:hover{
+  fill:hotpink;
+}
+
+
+.vector_map{
+  height: 70vh;
+  width: 100vw;
+}
