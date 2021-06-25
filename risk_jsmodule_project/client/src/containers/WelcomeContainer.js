@@ -1,9 +1,13 @@
 import React from 'react'
+import GameForm from '../components/GameForm'
+
+
 
 const WelcomeContainer = () => {
     return (
-        <div>
-            <h2>this is the welcome container</h2>
+        <div className="welcome-container">
+            <h2>LITTLE RISK</h2>
+            <GameForm />
             
         </div>
     )

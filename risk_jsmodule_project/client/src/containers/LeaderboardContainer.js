@@ -19,10 +19,15 @@ const LeaderboardContainer = () => {
         .then(players => setPlayers(players))
     }
 
+    // const addPlayer = () => {
+
+    // }
+
     return (
         <div>
-            {/* <h2>This is the leaderboard container</h2> */}
+           
             <PlayerList players={players} />
+            
         </div>
     )
 }
