@@ -12,7 +12,7 @@
             - North America = 5 troops/turn
             - Asia = 7 troops/turn
 */
-const calculateReinforcements = (player) => {
+const calcuReinforcements = (player) => {
     let reinforcements = Math.floor(player.territories/3);
     if (reinforcements < 3){
         reinforcements = 3;
