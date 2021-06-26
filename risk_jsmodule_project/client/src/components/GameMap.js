@@ -35,32 +35,43 @@ const GameMap = ({players}) => {
           "borders": target.attributes.borders.value,
           "id": target.attributes.id.value
         })
-        const borders = getBorders(target.attributes.borders.value);
-        // highlightBorders(borders);
+        getBorders(target.attributes.id.value);
       },
     };
 
-    // Returns an array of bordering state names
-    const getBorders = function(string) {      
-      let bordersList = [];
-      let index = 0;
-      let newWord = 0;
-      let tempString = string;
-      console.log(tempString)
-      for(let char of string){
-        index += 1;
-        if(char === ','){
-          bordersList.push(tempString.slice(newWord, index-1));
-        }
-        if(char === ' '){
-          newWord = index;
-        }
-        if(index === tempString.length){
-          bordersList.push(tempString.slice(newWord, index))
+    const getBorders = function(id) {
+      for(let state of gameState.GameState){
+        if(id === state.id){
+          console.log(state.borders)
         }
       }
-      return bordersList;
     }
+
+    // Returns an array of bordering state names (OLD)
+    // const getBorders = function(string) {      
+    //   let bordersList = [];
+    //   let index = 0;
+    //   let newWord = 0;
+    //   let tempString = string;
+    //   console.log(tempString)
+    //   for(let char of string){
+    //     index += 1;
+    //     if(char === ','){
+    //       bordersList.push(tempString.slice(newWord, index-1));
+    //     }
+    //     if(char === ' '){
+    //       newWord = index;
+    //     }
+    //     if(index === tempString.length){
+    //       bordersList.push(tempString.slice(newWord, index))
+    //     }
+    //   }
+    //   return bordersList;
+    // }
+
+    // const getBorders2 = function(array){
+    //   console.log(array)
+    // } 
 
     // Highlight bordering states on click
     const highlightBorders = function(borders){

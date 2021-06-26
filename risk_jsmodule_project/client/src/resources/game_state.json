@@ -4,295 +4,344 @@
     "id": "us-al",
     "name": "Alabama",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Mississippi", "Tennessee", "Florida", "Georgia"]
     },
     {
     "id": "us-ar",
     "name": "Arkansas",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Oklahoma", "Tennessee", "Texas", "Louisiana", "Mississippi", "Missouri"]
     },
     {
     "id": "us-az",
     "name": "Arizona",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Nevada", "New Mexico", "Utah", "California", "Colorado"]
     },
     {
     "id": "us-ca",
     "name": "California",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Oregon", "Arizona", "Nevada"]
     },
     {
     "id": "us-co",
     "name": "Colorado",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["New Mexico", "Oklahoma", "Utah", "Wyoming", "Arizona", "Kansas", "Nebraska"]
     },
     {
     "id": "us-ct",
     "name": "Connecticut",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Oregon", "Arizona", "Nevada"]
     },
     {
     "id": "us-dc",
     "name": "Washington, DC",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["New Mexico", "Oklahoma", "Utah", "Wyoming", "Arizona", "Kansas", "Nebraska"]
     },
     {
     "id": "us-de",
     "name": "Delaware",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["New York", "Rhode Island", "Massachusetts"]
     },
     {
     "id": "us-fl",
     "name": "Florida",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Georgia, Alabama"]
     },
     {
     "id": "us-ga",
     "name": "Georgia",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["North Carolina", "South Carolina", "Tennessee", "Alabama", "Florida"]
     },
     {
     "id": "us-ia",
     "name": "Iowa",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,    
+    "borders": ["Nebraska", "South Dakota", "Wisconsin", "Illinois", "Minnesota", "Missouri"]
     },
     {
     "id": "us-id",
     "name": "Idaho",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Utah", "Washington", "Wyoming", "Montana", "Nevada", "Oregon"]
     },
     {
     "id": "us-il",
     "name": "Illinois",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Kentucky", "Missouri", "Wisconsin", "Indiana", "Iowa", "Michigan"]
     },
     {
     "id": "us-in",
     "name": "Indiana",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Michigan", "Ohio", "Illinois", "Kentucky"]
     },
     {
     "id": "us-ks",
     "name": "Kansas",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Nebraska", "Oklahoma", "Colorado", "Missouri"]
     },
     {
     "id": "us-ky",
     "name": "Kentucky",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Tennessee", "Virginia", "West Virginia", "Illinois", "Indiana", "Missouri", "Ohio"]
     },
     {
     "id": "us-la",
     "name": "Louisiana",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Texas", "Arkansas", "Mississippi"]
     },
     {
     "id": "us-ma",
     "name": "Massachusetts",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["New York", "Rhode Island", "Vermont", "Connecticut", "New Hampshire"]
     },
     {
     "id": "us-md",
     "name": "Maryland",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Virginia", "West Virginia", "Delaware", "Pennsylvania"]
     },
     {
     "id": "us-me",
     "name": "Maine",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["New Hampshire"]
     },
     {
     "id": "us-mi",
     "name": "Michigan",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Ohio", "Wisconsin", "Illinois", "Indiana", "Minnesota"]
     },
     {
     "id": "us-mn",
     "name": "Minnesota",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["North Dakota", "South Dakota", "Wisconsin", "Iowa", "Michigan"]
     },
     {
     "id": "us-mo",
     "name": "Missouri",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Nebraska", "Oklahoma", "Tennessee", "Arkansas", "Illinois", "Iowa", "Kansas", "Kentucky"]
     },
     {
     "id": "us-ms",
     "name": "Mississippi",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Louisiana", "Tennessee", "Alabama", "Arkansas"]
     },
     {
     "id": "us-mt",
     "name": "Montana",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["South Dakota", "Wyoming", "Idaho", "North Dakota"]
     },
     {
     "id": "us-nc",
     "name": "North Carolina",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Tennessee", "Virginia", "Georgia", "South Carolina"]
     },
     {
     "id": "us-nd",
     "name": "North Dakota",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["South Dakota", "Minnesota", "Montana"]
     },
     {
     "id": "us-ne",
     "name": "Nebraska",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Missouri", "South Dakota", "Wyoming", "Colorado", "Iowa", "Kansas"]
     },
     {
     "id": "us-nh",
     "name": "New Hampshire",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Vermont", "Maine", "Massachusetts"]
     },
     {
     "id": "us-nj",
     "name": "New Jersey",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Pennsylvania", "Delaware", "New York"]
     },
     {
     "id": "us-nm",
     "name": "New Mexico",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Oklahoma", "Texas", "Utah", "Arizona", "Colorado"]
     },
     {
     "id": "us-nv",
     "name": "Nevada",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Idaho", "Oregon", "Utah", "Arizona", "California"]
     },
     {
     "id": "us-ny",
     "name": "New York",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Pennsylvania", "Rhode Island", "Vermont", "Connecticut", "Massachusetts", "New Jersey"]
     },
     {
     "id": "us-oh",
     "name": "Ohio",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Michigan", "Pennsylvania", "West Virginia", "Indiana", "Kentucky"]
     },
     {
     "id": "us-ok",
     "name": "Oklahoma",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Missouri", "New Mexico", "Texas", "Arkansas", "Colorado", "Kansas"]
     },
     {
     "id": "us-or",
     "name": "Oregon",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Nevada", "Washington", "California", "Idaho"]
     },
     {
     "id": "us-pa",
     "name": "Pennsylvania",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["New York", "Ohio", "West Virginia", "Delaware", "Maryland", "New Jersey"]
     },
     {
     "id": "us-ri",
     "name": "Rhode Island",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Massachusetts", "New York", "Connecticut"]
     },
     {
     "id": "us-sc",
     "name": "South Carolina",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["North Carolina", "Georgia"]
     },
     {
     "id": "us-sd",
     "name": "South Dakota",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Nebraska", "North Dakota", "Wyoming", "Iowa", "Minnesota", "Montana"]
     },
     {
     "id": "us-tn",
     "name": "Tennessee",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Mississippi", "Missouri", "North Carolina", "Virginia", "Alabama", "Arkansas", "Georgia", "Kentucky"]
     },
     {
     "id": "us-tx",
     "name": "Texas",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["New Mexico", "Oklahoma", "Arkansas", "Louisiana"]
     },
     {
     "id": "us-ut",
     "name": "Utah",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Nevada", "New Mexico", "Wyoming", "Arizona", "Colorado", "Idaho"]
     },
     {
     "id": "us-va",
     "name": "Virginia",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["North Carolina", "Tennessee", "West Virginia", "Kentucky", "Maryland"]
     },
     {
     "id": "us-vt",
     "name": "Vermont",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["New Hampshire", "New York", "Massachusetts"]
     },
     {
     "id": "us-wa",
     "name": "Washington",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Oregon", "Idaho"]
     },
     {
     "id": "us-wi",
     "name": "Wisconsin",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Michigan", "Minnesota", "Illinois", "Iowa"]
     },
     {
     "id": "us-wv",
     "name": "West Virginia",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Pennsylvania", "Virginia", "Kentucky", "Maryland", "Ohio"]
     },
     {
     "id": "us-wy",
     "name": "Wyoming",
     "occupier": "empty",
-    "troops": 0
+    "troops": 0,
+    "borders": ["Nebraska", "South Dakota", "Utah", "Colorado", "Idaho", "Montana"]
     }
     ]
     }
