@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import WelcomeContainer from './containers/WelcomeContainer';
 import LeaderboardContainer from './containers/LeaderboardContainer';
@@ -9,7 +9,7 @@ import NavBar from './components/NavBar';
 
 
 import MapContainer from './containers/MapContainer';
-import React, {useState, useEffect} from 'react';
+
 
 const App = () => {
 
