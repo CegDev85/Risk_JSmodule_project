@@ -37,8 +37,20 @@
   }
 }
 
-#us-ca:hover{
+path{
+  fill:gray;
+  cursor: pointer;
+  border:none;
+  outline:none;
+}
+
+path:hover{
   fill:hotpink;
+}
+
+
+path:focus{
+  fill: yellow;
 }
 
 
