@@ -1,18 +1,38 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { VectorMap } from '@south-paw/react-vector-maps';
 import usa from '../resources/usa.json'
+import GameState from '../resources/game_state.json'
 
 const GameMap = ({players}) => {
   
-    const [hovered, setHovered] = React.useState('None');
+  
     const [selectedTerritory, setSelectedTerritory] = React.useState('None');
+    // new state added to hold data on 'layers' at a high enough level that they can be manipulated.  ID matches that from VectorMap JSON
+    const [gameState, setGameState] = useState([]);
+
+    useEffect(() => {
+      setGameState({...GameState})
+    },[])
+
+    useEffect(() => {
+      if(selectedTerritory != 'None')
+        {console.log(`territory selected: id=${selectedTerritory.id}`)
+        console.log(`hard print cali id=${gameState.GameState[5].id}`)}
+        // for(let i=0; i<gameState.length; i++){
+        //   if(selectedTerritory.id === gameState.Game[i].id){
+        //     console.log(gameState[i]);
+        //   }
+        // }
+    }, [selectedTerritory])
+
   
     const layerProps = {
       onClick: ({ target }) => {
         setSelectedTerritory({
           "territory": target.attributes.name.value,
           "occupier": target.attributes.occupier.value,
-          "troops": target.attributes.troops.value
+          "troops": target.attributes.troops.value,
+          "id": target.attributes.id.value
         })
       },
     };
