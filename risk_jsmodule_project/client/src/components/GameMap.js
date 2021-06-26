@@ -8,22 +8,44 @@ const GameMap = ({players}) => {
   
     const [selectedTerritory, setSelectedTerritory] = React.useState('None');
     // new state added to hold data on 'layers' at a high enough level that they can be manipulated.  ID matches that from VectorMap JSON
-    const [gameState, setGameState] = useState([]);
+    const [gameState, setGameState] = useState(null);
 
     useEffect(() => {
       setGameState({...GameState})
     },[])
 
     useEffect(() => {
-      if(selectedTerritory != 'None')
-        {console.log(`territory selected: id=${selectedTerritory.id}`)
-        console.log(`hard print cali id=${gameState.GameState[5].id}`)}
-        // for(let i=0; i<gameState.length; i++){
-        //   if(selectedTerritory.id === gameState.Game[i].id){
-        //     console.log(gameState[i]);
-        //   }
-        // }
+      if(selectedTerritory !== 'None')
+        // {console.log(`territory selected: id=${selectedTerritory.id}`)
+        // console.log(`hard print cali id=${gameState.GameState[5].id}`)}
+        for(let i=0; i<gameState.GameState.length; i++){
+          if(selectedTerritory.id === gameState.GameState[i].id){
+            // gameState.GameState[i].occupier = "Calum";              // Should use setGameState
+            console.log(gameState.GameState[i]);
+          }
+        }
     }, [selectedTerritory])
+
+    useEffect(() => {
+      if(gameState){                    // a sync error?
+        territoryInit();
+      }
+  }, [players])
+
+
+    const territoryInit = () => {
+      //There are 49 states, which need to be split amongst players. 
+      const noOfPlayers = players.length;
+      const rolls = [];
+      for(let i=0; i<gameState.GameState.length; i++){
+        rolls.push((Math.floor(Math.random()*noOfPlayers)));
+      }
+      for(let i=0; i<gameState.GameState.length; i++){
+        gameState.GameState[i].occupier=players[rolls[i]];           // should use setGameState
+      }
+      console.log(rolls);
+      console.log(gameState.GameState.length);
+    }
 
   
     const layerProps = {

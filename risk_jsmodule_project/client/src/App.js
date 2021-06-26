@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import WelcomeContainer from './containers/WelcomeContainer';
 import LeaderboardContainer from './containers/LeaderboardContainer';
@@ -10,16 +10,8 @@ const App = () => {
 
   const [players, setPlayers] = useState([]);
 
-  // useEffect(() => {
-  //   setPlayers[{
-  //     "name": 'Player_one',
-  //     "colour": '#61dafb'
-  //   }, 
-  //   {
-  //     "name": 'Player Two',
-  //     "colour": "#000000"
-  //   }]
-  // },[])
+  useEffect(() => {
+    setPlayers(["player1", "player2"])},[])
 
   return(
     <div className="App">
