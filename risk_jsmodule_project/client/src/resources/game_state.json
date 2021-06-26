@@ -1,0 +1,298 @@
+{
+    "GameState": [
+    {
+    "id": "us-al",
+    "name": "Alabama",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ar",
+    "name": "Arkansas",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-az",
+    "name": "Arizona",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ca",
+    "name": "California",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-co",
+    "name": "Colorado",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ct",
+    "name": "Connecticut",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-dc",
+    "name": "Washington, DC",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-de",
+    "name": "Delaware",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-fl",
+    "name": "Florida",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ga",
+    "name": "Georgia",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ia",
+    "name": "Iowa",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-id",
+    "name": "Idaho",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-il",
+    "name": "Illinois",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-in",
+    "name": "Indiana",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ks",
+    "name": "Kansas",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ky",
+    "name": "Kentucky",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-la",
+    "name": "Louisiana",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ma",
+    "name": "Massachusetts",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-md",
+    "name": "Maryland",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-me",
+    "name": "Maine",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-mi",
+    "name": "Michigan",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-mn",
+    "name": "Minnesota",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-mo",
+    "name": "Missouri",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ms",
+    "name": "Mississippi",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-mt",
+    "name": "Montana",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-nc",
+    "name": "North Carolina",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-nd",
+    "name": "North Dakota",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ne",
+    "name": "Nebraska",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-nh",
+    "name": "New Hampshire",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-nj",
+    "name": "New Jersey",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-nm",
+    "name": "New Mexico",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-nv",
+    "name": "Nevada",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ny",
+    "name": "New York",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-oh",
+    "name": "Ohio",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ok",
+    "name": "Oklahoma",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-or",
+    "name": "Oregon",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-pa",
+    "name": "Pennsylvania",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ri",
+    "name": "Rhode Island",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-sc",
+    "name": "South Carolina",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-sd",
+    "name": "South Dakota",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-tn",
+    "name": "Tennessee",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-tx",
+    "name": "Texas",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-ut",
+    "name": "Utah",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-va",
+    "name": "Virginia",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-vt",
+    "name": "Vermont",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-wa",
+    "name": "Washington",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-wi",
+    "name": "Wisconsin",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-wv",
+    "name": "West Virginia",
+    "occupier": "empty",
+    "troops": 0
+    },
+    {
+    "id": "us-wy",
+    "name": "Wyoming",
+    "occupier": "empty",
+    "troops": 0
+    }
+    ]
+    }
