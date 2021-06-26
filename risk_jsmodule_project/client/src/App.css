@@ -44,3 +44,31 @@ body{
     transform: rotate(360deg);
   }
 } */
+
+
+path{
+  fill:gray;
+  cursor: pointer;
+  border:none;
+  outline:none;
+}
+
+path:hover{
+  fill:hotpink;
+}
+
+
+path:focus{
+  fill: yellow;
+}
+
+
+.vector_map{
+  height: 70vh;
+  width: 100vw;
+}
+
+.map-container{
+  background-color: #282c34;
+  color: white;
+}

@@ -1,4 +1,5 @@
 import './App.css';
+<<<<<<< HEAD
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import WelcomeContainer from './containers/WelcomeContainer';
@@ -8,8 +9,10 @@ import NavBar from './components/NavBar';
 
 
 
+=======
 import MapContainer from './containers/MapContainer';
 import React, {useState, useEffect} from 'react';
+>>>>>>> main
 
 const App = () => {
 
@@ -28,6 +31,7 @@ const App = () => {
 
   return(
     <div className="App">
+<<<<<<< HEAD
       
       <Router>
         <>
@@ -38,13 +42,16 @@ const App = () => {
         </Switch>
         </>
       </Router>
-      <MapContainer players={players}/>
+      
     
     </div>
     
   );
-      
-  
+=======
+      <MapContainer players={players}/>
+    </div>
+  )
+>>>>>>> main
 }
 
 export default App;
