@@ -3,7 +3,7 @@ import GameMap from '../components/GameMap';
 
 const MapContainer = ({players}) => {
     return (
-        <div>
+        <div className='map-container'>
             <GameMap players={players}/>
         </div>
     )

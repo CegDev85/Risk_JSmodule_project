@@ -58,3 +58,8 @@ path:focus{
   height: 70vh;
   width: 100vw;
 }
+
+.map-container{
+  background-color: #282c34;
+  color: white;
+}
