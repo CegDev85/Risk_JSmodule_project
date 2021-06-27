@@ -36,7 +36,7 @@ const App = () => {
         </Switch>
         </>
       </Router>
-      <MapContainer players={players}/>
+      {/* <MapContainer players={players}/> */}
     
     </div>
     
