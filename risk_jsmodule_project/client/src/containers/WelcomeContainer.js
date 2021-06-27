@@ -3,11 +3,16 @@ import GameForm from '../components/GameForm'
 
 
 
-const WelcomeContainer = () => {
+
+const WelcomeContainer = ({addPlayer}) => {
+
+
+
+
     return (
         <div className="welcome-container">
             <h2>LITTLE RISK</h2>
-            <GameForm />
+            <GameForm addPlayer={addPlayer}/>
             
         </div>
     )
