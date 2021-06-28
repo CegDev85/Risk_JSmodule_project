@@ -1,11 +1,16 @@
 .App {
-  text-align: center;
+  text-align:center;
 }
 
+/* .nav-bar {
+  display: flex;
+  flex-direction: row;
+} */
+
 body{
-  background-image: url("./background.png");
+  background-image: url("./mapbackground2.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:cover;
 }
 
 

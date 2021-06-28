@@ -1,5 +1,5 @@
-{
-    "GameState": [
+{"GameState":
+    [
     {
     "id": "us-al",
     "name": "Alabama",
@@ -344,4 +344,4 @@
     "borders": ["Nebraska", "South Dakota", "Utah", "Colorado", "Idaho", "Montana"]
     }
     ]
-    }
+}
