@@ -1,26 +1,18 @@
 import React,{useState, useEffect} from 'react'
 import { VectorMap } from '@south-paw/react-vector-maps';
 import usa from '../resources/usa.json'
-// import GameState from '../resources/game_state.json'
-
+import GameState from '../resources/game_state.json'
 
 const GameMap = ({players}) => {
   
   
     const [selectedTerritory, setSelectedTerritory] = React.useState('None');
+    const [currentTerritoy, setCurrentTerritory] = useState('None');
     // new state added to hold data on 'layers' at a high enough level that they can be manipulated.  ID matches that from VectorMap JSON
     const [gameState, setGameState] = useState(null);
 
     useEffect(() => {
-      // fetch('../resources/game_state.json')
-      fetch(`../resources/game_state.json`, {
-        headers : { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-         }
-        })
-      .then(res => res.json())
-      .then(data => setGameState(data))
+      setGameState({...GameState})
     },[])
 
     useEffect(() => {
@@ -30,7 +22,7 @@ const GameMap = ({players}) => {
         for(let i=0; i<gameState.GameState.length; i++){
           if(selectedTerritory.id === gameState.GameState[i].id){
             // gameState.GameState[i].occupier = "Calum";              // Should use setGameState
-            console.log(gameState.GameState[i]);
+            setCurrentTerritory(gameState.GameState[i]);
           }
         }
     }, [selectedTerritory])
@@ -52,8 +44,6 @@ const GameMap = ({players}) => {
       for(let i=0; i<gameState.GameState.length; i++){
         gameState.GameState[i].occupier=players[rolls[i]];           // should use setGameState?
       }
-      console.log(rolls);
-      console.log(gameState.GameState.length);
     }
 
   
@@ -74,9 +64,9 @@ const GameMap = ({players}) => {
       <div>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div className='selected-terittory-data'>
-            <h5>Selected: {selectedTerritory.territory}</h5>
-            <p>occupier: {selectedTerritory.occupier}</p>
-            <p>troops: {selectedTerritory.troops}</p>
+            <h5>Selected: {currentTerritoy.territory}</h5>
+            <p>occupier: {currentTerritoy.occupier}</p>
+            <p>troops: {currentTerritoy.troops}</p>
           </div>
       </div>
   );
