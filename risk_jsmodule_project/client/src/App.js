@@ -15,8 +15,15 @@ const App = () => {
 
   const [players, setPlayers] = useState([]);
 
-  useEffect(() => {
-    setPlayers(["player1", "player2"])},[])
+  // useEffect(() => {
+  //   setPlayers(["player1", "player2"])},[])
+
+
+
+  const addPlayers = (playersToAdd) => {
+    setPlayers(playersToAdd)
+    }
+
 
   return(
     <div className="App">
