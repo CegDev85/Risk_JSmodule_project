@@ -2,12 +2,13 @@ import React,{useState, useEffect} from 'react'
 import { VectorMap } from '@south-paw/react-vector-maps';
 import usa from '../resources/usa.json'
 import GameState from '../resources/game_state.json'
+import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 
 const GameMap = ({players}) => {
   
   
     const [selectedTerritory, setSelectedTerritory] = React.useState('None');
-    const [currentTerritoy, setCurrentTerritory] = useState('None');
+    const [currentTerritoy, setCurrentTerritory] = useState('None'); //Finds game-state equivalent of selectedTerritory
     // new state added to hold data on 'layers' at a high enough level that they can be manipulated.  ID matches that from VectorMap JSON
     const [gameState, setGameState] = useState(null);
 
@@ -17,18 +18,15 @@ const GameMap = ({players}) => {
 
     useEffect(() => {
       if(selectedTerritory !== 'None')
-        // {console.log(`territory selected: id=${selectedTerritory.id}`)
-        // console.log(`hard print cali id=${gameState.GameState[5].id}`)}
         for(let i=0; i<gameState.GameState.length; i++){
           if(selectedTerritory.id === gameState.GameState[i].id){
-            // gameState.GameState[i].occupier = "Calum";              // Should use setGameState
             setCurrentTerritory(gameState.GameState[i]);
           }
         }
     }, [selectedTerritory])
 
     useEffect(() => {
-      if(gameState){                    // a sync error?
+      if(gameState){                    
         territoryInit();
       }
   }, [players])
@@ -37,13 +35,20 @@ const GameMap = ({players}) => {
     const territoryInit = () => {
       //There are 49 states, which need to be split amongst players. 
       const noOfPlayers = players.length;
-      const rolls = [];
-      for(let i=0; i<gameState.GameState.length; i++){
-        rolls.push((Math.floor(Math.random()*noOfPlayers)));
+      const noTer = gameState.GameState.length;
+      let tempState = gameState;
+
+      for(let i=0; i<noTer; i++){
+        let tempTer = {
+          'name': gameState.GameState[i].name,
+          'id': gameState.GameState[i].id,
+          'occupier': players[Math.floor(Math.random()*noOfPlayers)],
+          'troops': 0
+        };
+        tempState.GameState.push(tempTer)
       }
-      for(let i=0; i<gameState.GameState.length; i++){
-        gameState.GameState[i].occupier=players[rolls[i]];           // should use setGameState?
-      }
+      tempState.GameState.splice(0, noTer);
+      setGameState(tempState);
     }
 
   
