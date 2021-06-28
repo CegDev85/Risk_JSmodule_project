@@ -1,7 +1,8 @@
 import React,{useState, useEffect} from 'react'
 import { VectorMap } from '@south-paw/react-vector-maps';
 import usa from '../resources/usa.json'
-import GameState from '../resources/game_state.json'
+// import GameState from '../resources/game_state.json'
+
 
 const GameMap = ({players}) => {
   
@@ -11,7 +12,15 @@ const GameMap = ({players}) => {
     const [gameState, setGameState] = useState(null);
 
     useEffect(() => {
-      setGameState({...GameState})
+      // fetch('../resources/game_state.json')
+      fetch(`../resources/game_state.json`, {
+        headers : { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+         }
+        })
+      .then(res => res.json())
+      .then(data => setGameState(data))
     },[])
 
     useEffect(() => {
@@ -41,7 +50,7 @@ const GameMap = ({players}) => {
         rolls.push((Math.floor(Math.random()*noOfPlayers)));
       }
       for(let i=0; i<gameState.GameState.length; i++){
-        gameState.GameState[i].occupier=players[rolls[i]];           // should use setGameState
+        gameState.GameState[i].occupier=players[rolls[i]];           // should use setGameState?
       }
       console.log(rolls);
       console.log(gameState.GameState.length);

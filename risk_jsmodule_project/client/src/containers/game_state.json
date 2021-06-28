@@ -1,5 +1,4 @@
-{
-    "GameState": [
+[
     {
     "id": "us-al",
     "name": "Alabama",
@@ -295,4 +294,4 @@
     "troops": 0
     }
     ]
-    }
+    
