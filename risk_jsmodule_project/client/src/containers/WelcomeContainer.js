@@ -1,9 +1,9 @@
 import React from 'react'
 import GameForm from '../components/GameForm'
 import CountryContainer from './CountryContainer'
-import CountryList from '../components/CountryList'
-import CountrySelect from '../components/CountrySelect'
-import CountryDetail from '../components/CountryDetail'
+// import CountryList from '../components/CountryList'
+// import CountrySelect from '../components/CountrySelect'
+// import CountryDetail from '../components/CountryDetail'
 
 
 

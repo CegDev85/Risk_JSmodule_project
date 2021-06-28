@@ -62,14 +62,19 @@ const GameForm = () => {
             }
         let playersToAdd = [player1obj,player2obj]
             addPlayers(playersToAdd)
+            pageRedirect()
             
+    }
+
+    const pageRedirect = (event) => {
+        window.location.href = "http://localhost:3000/gamegrid"
     }
 
 
     return (
         <div className="game-form">
             <p>This is the game form</p>
-            <form onSubmit={handleSubmit} method="post">
+            <form onSubmit={handleSubmit} method="post" >
                 <label for="player1">Player 1</label>
                 <input type="text" id="player1" name="player1"></input>
                 <label for="player2">Player 2</label>
