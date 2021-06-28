@@ -15,6 +15,7 @@ const App = () => {
 
   const [players, setPlayers] = useState([]);
 
+<<<<<<< HEAD
 //   useEffect(() => {
 //     // getPlayers()
 // },[])
@@ -35,10 +36,14 @@ const addPlayers = (playersToAdd) => {
   //     "colour": "#000000"
   //   }]
   // },[])
+=======
+  useEffect(() => {
+    setPlayers(["player1", "player2"])},[])
+>>>>>>> e65fccb9813674a5601d02eae444fe4f113950bc
 
   return(
     <div className="App">
-     
+
       <Router>
         <>
         <NavBar />
@@ -49,14 +54,12 @@ const addPlayers = (playersToAdd) => {
         </Switch>
         </>
       </Router>
-      
+
       {/* <MapContainer players={players}/> */}
-    
+
     </div>
-    
+
   );
-      
-  
 }
 
 export default App;
