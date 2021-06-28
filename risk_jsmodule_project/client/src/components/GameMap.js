@@ -158,7 +158,6 @@ const GameMap = ({players}) => {
 
     //Clears existing highlights when new US state is clicked
     const clearHighlights = function(){
-      console.log(document.head)
       for(let borderId of selectedBorders){
         var element = document.getElementById(borderId);
         element.parentNode.removeChild(element);
