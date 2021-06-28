@@ -8,7 +8,7 @@ const GameGrid = ({players}) => {
     return (
         <div>
            
-            <h1>This is the Game</h1>
+            <h1>PLAN YOUR ATTACK!</h1>
             {/* <MapContainer players={players}/> */}
             <GameMap players={players}/>
             

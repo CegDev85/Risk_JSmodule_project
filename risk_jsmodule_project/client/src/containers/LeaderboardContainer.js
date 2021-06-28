@@ -22,9 +22,10 @@ const LeaderboardContainer = () => {
  
 
     return (
-        <div>
+        <div className="leaderboard">
            
             <PlayerList players={players} />
+       
             
         </div>
     )

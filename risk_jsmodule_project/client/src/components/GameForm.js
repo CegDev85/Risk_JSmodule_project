@@ -83,11 +83,13 @@ const GameForm = ({addPlayersToState}) => {
 
     return (
         <div className="game-form">
-            <p>This is the game form</p>
+            {/* <p>This is the game form</p> */}
+            <br></br>
+            <br></br>
             <form onSubmit={handleSubmit} method="post" >
-                <label htmlFor="player1">Player 1</label>
-                <input type="text" id="player1" name="player1"></input>
-                <label htmlFor="player2">Player 2</label>
+                <label htmlFor="player1">Player 1:    </label>
+                <input type="text" id="player1" name="player1"></input>    
+                <label htmlFor="player2">Player 2:    </label>
                 <input type="text" id="player2" name="player2"></input>
                 <input type="submit" value="Begin Game"></input>
             </form>
