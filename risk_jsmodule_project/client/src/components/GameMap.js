@@ -2,13 +2,13 @@ import React,{useState, useEffect} from 'react'
 import { VectorMap } from '@south-paw/react-vector-maps';
 import usa from '../resources/usa.json'
 import GameState from '../resources/game_state.json'
-import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
+import PlayerUI from './PlayerUI';
 
 const GameMap = ({players}) => {
   
   
     const [selectedTerritory, setSelectedTerritory] = React.useState('None');
-    const [currentTerritoy, setCurrentTerritory] = useState('None'); //Finds game-state equivalent of selectedTerritory
+    const [currentTerritory, setCurrentTerritory] = useState('None'); //Finds game-state equivalent of selectedTerritory
     // new state added to hold data on 'layers' at a high enough level that they can be manipulated.  ID matches that from VectorMap JSON
     const [gameState, setGameState] = useState(null);
 
@@ -84,15 +84,11 @@ const GameMap = ({players}) => {
       },
     };
 
-
-
     return (
       <div>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
-          <div className='selected-terittory-data'>
-            <h5>Selected: {currentTerritoy.territory}</h5>
-            <p>occupier: {currentTerritoy.occupier}</p>
-            <p>troops: {currentTerritoy.troops}</p>
+          <div>
+            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players}/>
           </div>
       </div>
   );
