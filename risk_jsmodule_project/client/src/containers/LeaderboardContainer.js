@@ -19,9 +19,7 @@ const LeaderboardContainer = () => {
         .then(players => setPlayers(players))
     }
 
-    // const addPlayer = () => {
-
-    // }
+ 
 
     return (
         <div>
