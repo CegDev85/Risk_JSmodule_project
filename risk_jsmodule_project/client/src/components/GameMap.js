@@ -34,6 +34,14 @@ const GameMap = ({players}) => {
       }
     }, [selectedBorders])
 
+    //Highlight occupied states
+    // useEffect(() => {
+    //   if(selectedTerritory !== 'None'){
+    //     console.log("bingo!")
+    //     highlightStates()
+    //   }
+    // }, [selectedTerritory])
+
   
     const layerProps = {
       onClick: ({ target }) => {
@@ -52,7 +60,7 @@ const GameMap = ({players}) => {
     let bordersIdArray = []
 
     const getBorders = function(id) {
-      
+
       for(let state of gameState.GameState){
         if(id === state.id){
           let borderNames = state.borders
@@ -70,22 +78,25 @@ const GameMap = ({players}) => {
 
     
 
-    // Highlight bordering states on click
-    // const highlightBorders = function(borders){
-    //   for(let borderName of borders){
-    //     for(let state of gameState.GameState){
-    //       if (state.name === borderName){ 
-    //         bordersIdArray.push(state.id)
-    //       }
+    // const highlightStates = function(){
+
+    //   for(let state of gameState.GameState){
+    //     console.log(state.occupier)
+    //     if(state.occupier === "Player 1"){
+    //       const newID = "Player 1"
+    //       var style = document.createElement('style');
+    //       style.setAttribute('id', newID)
+    //       style.innerHTML = `#${newID} { fill: green;
+    //     }`;
+          
     //     }
     //   }
 
-    let bordersClicked = false
-    
-    const highlightBorders = function(bordersIdArray){    
+    // }
+   
+    const highlightBorders = function(bordersIdArray){        
       
-      
-
+      //Highlights surrounding territories in hotpink
       for(let borderId of bordersIdArray){
         const newID = borderId
         var style = document.createElement('style');
@@ -96,6 +107,7 @@ const GameMap = ({players}) => {
       }
     }
 
+    //Clears existing highlights when new US state is clicked
     const clearHighlights = function(){
       console.log(document.head)
       for(let borderId of selectedBorders){
