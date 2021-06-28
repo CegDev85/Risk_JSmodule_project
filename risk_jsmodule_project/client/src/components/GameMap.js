@@ -3,6 +3,7 @@ import { VectorMap } from '@south-paw/react-vector-maps';
 import usa from '../resources/usa.json'
 import GameState from '../resources/game_state.json'
 
+
 const GameMap = ({players}) => {
   
   
@@ -42,7 +43,7 @@ const GameMap = ({players}) => {
     const getBorders = function(id) {
       for(let state of gameState.GameState){
         if(id === state.id){
-          console.log(state.borders)
+          highlightBorders(state.borders)
         }
       }
     }
@@ -73,19 +74,37 @@ const GameMap = ({players}) => {
     //   console.log(array)
     // } 
 
+    let bordersIdArray = []
+
     // Highlight bordering states on click
     const highlightBorders = function(borders){
       for(let borderName of borders){
-        for(let state of usa){
-          if(borderName === state.name){
-            console.log(borderName)
+        for(let state of gameState.GameState){
+          if (state.name === borderName){ 
+            bordersIdArray.push(state.id)
           }
         }
       }
+      
+      for(let borderId of bordersIdArray){
+        const newID = borderId
+        console.log(borderId)
+        var style = document.createElement('style');
+        style.innerHTML = `#${newID} { fill: hotpink;
+        }`;
+        document.head.appendChild(style);
+      }
     }
+   
+    // const newID = "#us-ar"
+
+    // var style = document.createElement('style');
+    // style.innerHTML = `${newID} { fill: hotpink;
+    //   }`;
+    // document.head.appendChild(style);
 
     return (
-      <div>
+      <div className="selected">
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div className='selected-terittory-data'>
             <h5>Selected: {selectedTerritory.territory}</h5>
