@@ -49,15 +49,36 @@ const GameMap = ({players}) => {
       }
       tempState.GameState.splice(0, noTer);
       setGameState(tempState);
+      troopsInit();
+    }
+
+    const troopsInit = () => {
+      const initalTroopCount = 80;
+      const troopsEach = Math.floor(initalTroopCount/players.length);
+      const territoryByPlayer = [];
+      for(let i=0; i<players.length; i++){
+        let tempTerArray = gameState.GameState.filter(GameState => GameState.occupier === players[i]);
+        territoryByPlayer.push(tempTerArray);
+      }
+      for(let i=0; i<territoryByPlayer.length; i++){                        // For players
+        for(let n=0; n<territoryByPlayer[i].length; n++){                   // For players' territories
+            territoryByPlayer[i][n].troops = 1;                                // Put one troop in each territory
+        }
+        let troopsLeft = troopsEach-territoryByPlayer[i].length;
+        while (troopsLeft > 0){                                              // Randomly distribute the remainder.
+          territoryByPlayer[i][Math.floor(Math.random()*territoryByPlayer[i].length)].troops += 1;
+          troopsLeft = troopsLeft - 1;
+        }
+      }
+      let distributionDone = gameState;
+      territoryByPlayer.forEach(array => distributionDone.GameState.concat(array))
+      setGameState(distributionDone);
     }
 
   
     const layerProps = {
       onClick: ({ target }) => {
         setSelectedTerritory({
-          "territory": target.attributes.name.value,
-          "occupier": target.attributes.occupier.value,
-          "troops": target.attributes.troops.value,
           "id": target.attributes.id.value
         })
       },
