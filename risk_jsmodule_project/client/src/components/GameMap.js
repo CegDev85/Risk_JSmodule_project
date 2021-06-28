@@ -10,6 +10,7 @@ const GameMap = ({players}) => {
     const [selectedTerritory, setSelectedTerritory] = React.useState('None');
     // new state added to hold data on 'layers' at a high enough level that they can be manipulated.  ID matches that from VectorMap JSON
     const [gameState, setGameState] = useState([]);
+    const [selectedBorders, setSelectedBorders] = useState([])
 
     useEffect(() => {
       setGameState({...GameState})
@@ -26,6 +27,13 @@ const GameMap = ({players}) => {
         // }
     }, [selectedTerritory])
 
+    //Highlight the bordering states
+    useEffect(() => {
+      if(selectedBorders !== 'None'){
+        highlightBorders(selectedBorders)
+      }
+    }, [selectedBorders])
+
   
     const layerProps = {
       onClick: ({ target }) => {
@@ -33,20 +41,74 @@ const GameMap = ({players}) => {
           "territory": target.attributes.name.value,
           "occupier": target.attributes.occupier.value,
           "troops": target.attributes.troops.value,
-          "borders": target.attributes.borders.value,
+          "borders": getBorders(target.attributes.id.value),
           "id": target.attributes.id.value
         })
-        getBorders(target.attributes.id.value);
+        clearHighlights()
+        setSelectedBorders(getBorders(target.attributes.id.value))
       },
     };
 
+    let bordersIdArray = []
+
     const getBorders = function(id) {
+      
       for(let state of gameState.GameState){
         if(id === state.id){
-          highlightBorders(state.borders)
+          let borderNames = state.borders
+          for(let borderName of borderNames){
+            for(let state of gameState.GameState){
+              if (state.name === borderName){ 
+                bordersIdArray.push(state.id)
+              }
+            }
+          }
         }
       }
+      return bordersIdArray
     }
+
+    
+
+    // Highlight bordering states on click
+    // const highlightBorders = function(borders){
+    //   for(let borderName of borders){
+    //     for(let state of gameState.GameState){
+    //       if (state.name === borderName){ 
+    //         bordersIdArray.push(state.id)
+    //       }
+    //     }
+    //   }
+
+    let bordersClicked = false
+    
+    const highlightBorders = function(bordersIdArray){    
+      
+      
+
+      for(let borderId of bordersIdArray){
+        const newID = borderId
+        var style = document.createElement('style');
+        style.setAttribute('id', newID)
+        style.innerHTML = `#${newID} { fill: hotpink;
+        }`;
+        document.head.appendChild(style);
+      }
+    }
+
+    const clearHighlights = function(){
+      console.log(document.head)
+      for(let borderId of selectedBorders){
+        var element = document.getElementById(borderId);
+        element.parentNode.removeChild(element);
+      }
+
+    }
+
+
+
+
+
 
     // Returns an array of bordering state names (OLD)
     // const getBorders = function(string) {      
@@ -74,27 +136,7 @@ const GameMap = ({players}) => {
     //   console.log(array)
     // } 
 
-    let bordersIdArray = []
-
-    // Highlight bordering states on click
-    const highlightBorders = function(borders){
-      for(let borderName of borders){
-        for(let state of gameState.GameState){
-          if (state.name === borderName){ 
-            bordersIdArray.push(state.id)
-          }
-        }
-      }
-      
-      for(let borderId of bordersIdArray){
-        const newID = borderId
-        console.log(borderId)
-        var style = document.createElement('style');
-        style.innerHTML = `#${newID} { fill: hotpink;
-        }`;
-        document.head.appendChild(style);
-      }
-    }
+    
    
     // const newID = "#us-ar"
 
@@ -104,7 +146,7 @@ const GameMap = ({players}) => {
     // document.head.appendChild(style);
 
     return (
-      <div className="selected">
+      <div>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div className='selected-terittory-data'>
             <h5>Selected: {selectedTerritory.territory}</h5>
