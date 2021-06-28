@@ -15,31 +15,15 @@ const App = () => {
 
   const [players, setPlayers] = useState([]);
 
-<<<<<<< HEAD
-//   useEffect(() => {
-//     // getPlayers()
-// },[])
-
-const addPlayers = (playersToAdd) => {
-  setPlayers(playersToAdd)
-}
-
-
-
   // useEffect(() => {
-  //   setPlayers[{
-  //     "name": 'Player_one',
-  //     "colour": '#61dafb'
-  //   }, 
-  //   {
-  //     "name": 'Player Two',
-  //     "colour": "#000000"
-  //   }]
-  // },[])
-=======
-  useEffect(() => {
-    setPlayers(["player1", "player2"])},[])
->>>>>>> e65fccb9813674a5601d02eae444fe4f113950bc
+  //   setPlayers(["player1", "player2"])},[])
+
+
+
+  const addPlayers = (playersToAdd) => {
+    setPlayers(playersToAdd)
+    }
+
 
   return(
     <div className="App">
