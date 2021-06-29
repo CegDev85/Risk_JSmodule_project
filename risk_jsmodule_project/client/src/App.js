@@ -39,7 +39,7 @@ const App = () => {
         </>
       </Router>
 
-      <MapContainer players={players}/>
+      {/* <MapContainer players={players}/> */}
 
     </div>
 
