@@ -16,6 +16,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
     useEffect(() => {
         if(playerTurn){
             calcReinforcements(playerTurn);
+            setUIColour(playerTurn);
         }
     }, [playerTurn])
 
@@ -120,6 +121,34 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
                 </>
             )
         }
+    }
+
+    const setUIColour = function(playerTurn){
+        var uiElement = (document.getElementsByClassName("user-interface"))
+    
+
+        if(playerTurn == players[0]){
+            console.log(uiElement[0])
+            uiElement[0].setAttribute("style", "border-color: coral")
+            console.log(uiElement[0])
+
+           
+            
+            
+
+            // const uiElement = document.querySelector(`[class="us_interface"]`)
+            // console.log(uiElement)
+            // uiElement.setAttribute("style", "fill: coral")
+
+        }
+        if(playerTurn == players[1]){
+            console.log(uiElement[0])
+            uiElement[0].setAttribute("style", "border-color: lightblue")
+            console.log(uiElement[0])
+            
+            
+        }
+
     }
 
 

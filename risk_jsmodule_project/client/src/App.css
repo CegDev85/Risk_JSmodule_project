@@ -116,7 +116,8 @@ path:focus{
   /* background-color: burlywood; */
   background-image: url('./resources/wood.jpeg');
   border-radius: 45%;
-  border: solid #b5a642 10px;
+  border: solid 10px;
+  border-color: #b5a642;
   margin:20px;
   color: white;
 }
