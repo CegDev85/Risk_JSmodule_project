@@ -5,10 +5,16 @@ import WelcomeContainer from './containers/WelcomeContainer';
 import LeaderboardContainer from './containers/LeaderboardContainer';
 import NavBar from './components/NavBar';
 import GameGrid from './components/GameGrid'
+// import PlaySound from './components/PlaySound';
+
+
+// https://stock.adobe.com/uk/search/audio?k=438224474
+
 
 
 
 import MapContainer from './containers/MapContainer';
+
 
 
 const App = () => {
@@ -20,14 +26,19 @@ const App = () => {
 
 
 
+
+
   const addPlayers = (playersToAdd) => {
     setPlayers(playersToAdd)
     }
 
-
+ 
+  
+  // render()
   return(
     <div className="App">
-
+    
+      {/* <PlaySound /> */}
       <Router>
         <>
         <NavBar />
@@ -45,5 +56,7 @@ const App = () => {
 
   );
 }
+
+
 
 export default App;
