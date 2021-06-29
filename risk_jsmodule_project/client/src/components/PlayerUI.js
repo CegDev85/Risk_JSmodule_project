@@ -9,6 +9,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
     const [rounds, setRounds] = useState(-1);
     const [targetTerritory, setTargetTerritory] = useState({"territory": null, "isFriendly": false})
     const [quantitySelectorTrigger, setQuantitySelectorTrigger] = useState(false);
+    const [troopsInPlay, setTroopsInPlay] = useState(null);
 
     useEffect(() => {
         assignTurn();
@@ -115,6 +116,13 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
         }
     }
 
+    const commitTroops = (number) => {
+        console.log(number);
+        setTroopsInPlay(parseInt(number));
+
+        //...
+    }
+
     const handleCurrent = () => {
         if (currentTerritory === 'None'){
             return (
@@ -165,7 +173,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             </div>
         </div>
         <div className='input-handler'>
-            <QuantSelector trigger={quantitySelectorTrigger} setTrigger={setQuantitySelectorTrigger} target={targetTerritory}/>
+            <QuantSelector trigger={quantitySelectorTrigger} setTrigger={setQuantitySelectorTrigger} target={targetTerritory} commitTroops={commitTroops} currentTerritory={currentTerritory}/>
         </div>
         </>
     )
