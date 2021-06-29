@@ -123,7 +123,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
                     </tbody>
                 </table>
                 <div className='ui-distribute-refinforcements'>
-                <button onClick={deploy}>+</button>
+                <button onClick={deploy}>Deploy Troop</button>
                 </div>
                 </>
             )
