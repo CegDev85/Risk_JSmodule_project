@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import QuantSelector from './QuantSelector';
+import BattleSummary from './BattleSummary';
 
 const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, changeOccupier}) => {
 
@@ -9,7 +10,8 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
     const [rounds, setRounds] = useState(-1);
     const [targetTerritory, setTargetTerritory] = useState({"territory": null, "isFriendly": false})
     const [quantitySelectorTrigger, setQuantitySelectorTrigger] = useState(false);
-    const [troopsInPlay, setTroopsInPlay] = useState(null);
+    const [battleSummaryTrigger, setBattleSummaryTrigger] = useState(false);
+    const [battleReport, setBattleReport] = useState({});
 
     useEffect(() => {
         assignTurn();
@@ -19,6 +21,17 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
     useEffect(() => { 
         if(playerTurn){
             calcReinforcements(playerTurn);
+        }
+        // Win condition??
+        if(rounds > 2){
+        let totalTerittories = gameState.GameState.length;
+            for(let i=0; i<playerTurn.length; i++){
+                let playerTerCount = gameState.GameState.filter(t => t.occupier == playerTurn[i])
+                if (playerTerCount === totalTerittories){
+                    console.log(`${playerTurn[i]} has won!!!!!!`)
+                    break;
+                }
+            }
         }
     }, [playerTurn])
 
@@ -148,31 +161,45 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
             for(let i=0; i<defendingTroops; i++){
                 rolls[1].push(Math.floor(Math.random() * 7))
             }
-            console.log(`Rolls pre-sort: ${rolls[0]} - ${rolls[1]}`);
 
             rolls[0].sort();
             rolls[1].sort();
             rolls[0].reverse();
             rolls[1].reverse();
-            console.log(`Rolls post-sort: ${rolls[0]} - ${rolls[1]}`);
+
+            let casualties = [0,0];
             
             if(!isNaN(rolls[0][1]) && !isNaN(rolls[1][1])){         //Are both attacker and defender using at least 2 troops?
                 if(rolls[1][1] >= rolls[0][1]){
                     // Defender wins
                     incrementTroops(-1, currentTerritory);
+                    casualties[0] += 1;
                 }
                 else{
                     // Attacker wins
                     incrementTroops(-1, targetTerritory.territory)
+                    casualties[1] += 1;
                 }
             }
             if(rolls[1][0] >= rolls[0][0]){
                 // Defender wins
                 incrementTroops(-1, currentTerritory);
+                casualties[0] += 1;
             }
             else{
                 // Attacker wins
                 incrementTroops(-1, targetTerritory.territory)
+                casualties[1] +=1;
+            }
+            
+            let battleSummary = {
+                "attacker": currentTerritory.occupier.name,
+                "defender": targetTerritory.territory.occupier.name,
+                "attackingRolls": rolls[0].toString(),
+                "defendingRolls": rolls[1].toString(),
+                "attackingCasualties": casualties[0],
+                "defendingCasualties": casualties[1],
+                "territoryTaken": false
             }
 
             if(targetTerritory.territory.troops === 0){
@@ -180,7 +207,11 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
                 changeOccupier(playerTurn, targetTerritory.territory);
                 incrementTroops(1, targetTerritory.territory);
                 incrementTroops(-1, currentTerritory);
+                battleSummary.territoryTaken = true;
             }
+
+            setBattleReport(battleSummary);
+            setBattleSummaryTrigger(true);
 
         }
     }
@@ -236,6 +267,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
         </div>
         <div className='input-handler'>
             <QuantSelector trigger={quantitySelectorTrigger} setTrigger={setQuantitySelectorTrigger} target={targetTerritory} commitTroops={commitTroops} currentTerritory={currentTerritory}/>
+            <BattleSummary trigger={battleSummaryTrigger} setTrigger={setBattleSummaryTrigger} battleReport={battleReport}/>
         </div>
         </>
     )
