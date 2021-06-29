@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import QuantSelector from './QuantSelector';
 
 const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
 
@@ -6,19 +7,23 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
     const [gameRunning, SetGameRunning] = useState(false);
     const [refinforcements, setReinforcements] = useState(0);
     const [rounds, setRounds] = useState(-1);
-    const [loaded, setLoaded] = useState(false);
     const [targetTerritory, setTargetTerritory] = useState({"territory": null, "isFriendly": false})
+    const [quantitySelectorTrigger, setQuantitySelectorTrigger] = useState(false);
 
     useEffect(() => {
         assignTurn();
         SetGameRunning(true);
     }, [])
 
-    useEffect(() => {
+    useEffect(() => { 
         if(playerTurn){
             calcReinforcements(playerTurn);
         }
     }, [playerTurn])
+
+    useEffect(() => {
+        setTargetTerritory({"territory": null, "isFriendly": false})
+    },[currentTerritory])
 
     const assignTurn = () => {
         setRounds(rounds+1);
@@ -59,6 +64,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             "territory": gameState.GameState.filter(b => b.id === id)[0], 
             "isFriendly": isFriendly
         });
+        setQuantitySelectorTrigger(true);
     }
 
     const getFriendly = () => {
@@ -72,9 +78,11 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             friendlyBorderListItems = friendlyBorders.map(b => <li key={b.id}>{b.name}</li>)
         }
         return (
+            <div className="friendly-border-list">
             <ul>
                 {friendlyBorderListItems}
             </ul>
+            </div>
         )
     }
     const getEnemy = () => {
@@ -87,10 +95,11 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             enemyBorderListItems = enemyBorders.map(b => <li key={b.id}>{b.name}</li>)
         }
         return (
-            
+            <div className="enemy-border-items">
             <ul>
                 {enemyBorderListItems}
             </ul>
+            </div>
         )
     }
 
@@ -143,6 +152,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
 
 
     return (
+        <>
         <div className='user-interface'>
             <h1>{playerTurn?.name}</h1>
             <div className='ui-reinforcements'>
@@ -156,8 +166,11 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             <div className='ui-end-turn'>
                     <button onClick={assignTurn}>END TURN</button>
             </div>
-            {targetTerritory.territory ? <h5>IM HERE</h5> : null}
         </div>
+        <div className='input-handler'>
+            <QuantSelector trigger={quantitySelectorTrigger} setTrigger={setQuantitySelectorTrigger} target={targetTerritory}/>
+        </div>
+        </>
     )
 }
 
