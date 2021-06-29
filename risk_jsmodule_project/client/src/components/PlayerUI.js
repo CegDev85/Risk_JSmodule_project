@@ -78,9 +78,11 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             friendlyBorderListItems = friendlyBorders.map(b => <li key={b.id}>{b.name}</li>)
         }
         return (
+            <div className="friendly-border-list">
             <ul>
                 {friendlyBorderListItems}
             </ul>
+            </div>
         )
     }
     const getEnemy = () => {
@@ -93,10 +95,11 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             enemyBorderListItems = enemyBorders.map(b => <li key={b.id}>{b.name}</li>)
         }
         return (
-            
+            <div className="enemy-border-items">
             <ul>
                 {enemyBorderListItems}
             </ul>
+            </div>
         )
     }
 
