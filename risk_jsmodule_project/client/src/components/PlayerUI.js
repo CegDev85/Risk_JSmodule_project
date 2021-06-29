@@ -7,6 +7,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
     const [refinforcements, setReinforcements] = useState(0);
     const [rounds, setRounds] = useState(-1);
     const [loaded, setLoaded] = useState(false);
+    const [targetTerritory, setTargetTerritory] = useState({"territory": null, "isFriendly": false})
 
     useEffect(() => {
         assignTurn();
@@ -53,10 +54,17 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
         }
     }
 
+    const handleTargetTerritory = (id, isFriendly) => {
+        setTargetTerritory({
+            "territory": gameState.GameState.filter(b => b.id === id)[0], 
+            "isFriendly": isFriendly
+        });
+    }
+
     const getFriendly = () => {
         let borders = getBorders(currentTerritory);
         let friendlyBorders = borders.filter(border => border.occupier == currentTerritory.occupier)
-        let friendlyBorderListItems = friendlyBorders.map(b => <li key={b.id}>{b.name}</li>)
+        let friendlyBorderListItems = friendlyBorders.map(b => <li key={b.id}> <button onClick={() => handleTargetTerritory(b.id, true)}>{b.name}</button></li>)
         return (
             <ul>
                 {friendlyBorderListItems}
@@ -66,7 +74,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
     const getEnemy = () => {
         let borders = getBorders(currentTerritory);
         let enemyBorders = borders.filter(border => border.occupier != currentTerritory.occupier)
-        let enemyBorderListItems = enemyBorders.map(b => <li key={b.id}>{b.name}</li>)
+        let enemyBorderListItems = enemyBorders.map(b => <li key={b.id}><button onClick={() => handleTargetTerritory(b.id, false)}>{b.name}</button></li>)
         return (
             
             <ul>
