@@ -180,12 +180,19 @@ const GameMap = ({players}) => {
       gameState.GameState.push(tempTer);
     }
 
+    const changeOccupier = (winner, territory) => {
+      let tempTer = territory;
+      tempTer.occupier = winner;
+      gameState.GameState.splice(gameState.GameState.indexOf(territory), 1);
+      gameState.GameState.push(tempTer);
+    }
+
 
     return (
       <div>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div>
-            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops}/>
+            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops} changeOccupier={changeOccupier}/>
             </div>
             </div>
       );

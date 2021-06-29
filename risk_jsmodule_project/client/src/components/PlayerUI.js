@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import QuantSelector from './QuantSelector';
 
-const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
+const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, changeOccupier}) => {
 
     const [playerTurn, setPlayerTurn] = useState(null);
     const [gameRunning, SetGameRunning] = useState(false);
@@ -125,6 +125,51 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
         }
         else{
             // Do fight. 
+            let attackingTroops = noTroops;
+            let defendingTroops = 1;
+            if (targetTerritory.territory.troops > 1){
+                defendingTroops = 2;
+            }
+            let rolls = [[],[]];
+            for(let i=0; i<attackingTroops; i++){
+                rolls[0].push(Math.floor(Math.random() * 7))
+            }
+            for(let i=0; i<defendingTroops; i++){
+                rolls[1].push(Math.floor(Math.random() * 7))
+            }
+            console.log(`Rolls pre-sort: ${rolls[0]} - ${rolls[1]}`);
+
+            rolls[0].sort();
+            rolls[1].sort();
+            rolls[0].reverse();
+            rolls[1].reverse();
+            console.log(`Rolls post-sort: ${rolls[0]} - ${rolls[1]}`);
+            
+            if(!isNaN(rolls[0][1]) && !isNaN(rolls[1][1])){         //Are both attacker and defender using at least 2 troops?
+                if(rolls[1][1] >= rolls[0][1]){
+                    // Defender wins
+                    incrementTroops(-1, currentTerritory);
+                }
+                else{
+                    // Attacker wins
+                    incrementTroops(-1, targetTerritory.territory)
+                }
+            }
+            if(rolls[1][0] >= rolls[0][0]){
+                // Defender wins
+                incrementTroops(-1, currentTerritory);
+            }
+            else{
+                // Attacker wins
+                incrementTroops(-1, targetTerritory.territory)
+            }
+
+            if(targetTerritory.territory.troops === 0){
+                // If defender is defeated..
+                changeOccupier(playerTurn, targetTerritory.territory);
+                incrementTroops(1, targetTerritory.territory);
+                incrementTroops(-1, currentTerritory);
+            }
 
         }
     }
