@@ -6,8 +6,10 @@
   text-align: center;
   display: flex;
   justify-content:center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: larger;
+  font-family:monospace;
+  font-size:x-large;
+  font-style: oblique;
+  
   
 }
 
@@ -20,10 +22,7 @@
   font-size:xx-large;
 }
 
-.nav-bar {
 
- 
-}
 
 
 
