@@ -52,3 +52,7 @@ path:focus{
 .ui-end-turn{
   border-radius: 50%;
 }
+
+.player1 {
+  fill: green;
+}

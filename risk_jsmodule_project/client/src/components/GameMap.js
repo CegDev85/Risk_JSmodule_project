@@ -11,6 +11,7 @@ const GameMap = ({players}) => {
     const [currentTerritory, setCurrentTerritory] = useState('None'); //Finds game-state equivalent of selectedTerritory
     // new state added to hold data on 'layers' at a high enough level that they can be manipulated.  ID matches that from VectorMap JSON
     const [gameState, setGameState] = useState(null);
+    const [highlightedBorders, setHighlightedBorders] = useState([]);
 
     useEffect(() => {
       setGameState({...GameState})
@@ -31,6 +32,10 @@ const GameMap = ({players}) => {
       }
   }, [players])
 
+    useEffect(() => [
+      territoryColours()
+    ], [gameState, currentTerritory])
+
 
     const territoryInit = () => {
       //There are 49 states, which need to be split amongst players. 
@@ -43,7 +48,8 @@ const GameMap = ({players}) => {
           'name': gameState.GameState[i].name,
           'id': gameState.GameState[i].id,
           'occupier': players[Math.floor(Math.random()*noOfPlayers)],
-          'troops': 0
+          'troops': 0,
+          'borders': gameState.GameState[i].borders
         };
         tempState.GameState.push(tempTer)
       }
@@ -75,12 +81,79 @@ const GameMap = ({players}) => {
       setGameState(distributionDone);
     }
 
+    const getBorders = function(id) {
+
+      let bordersIdArray = []
+
+      for(let territory of gameState.GameState){
+        if(id === territory.id){
+          let borderNamesArray = territory.borders
+          for(let borderName of borderNamesArray){
+            for(let territory of gameState.GameState){
+              if (territory.name === borderName){ 
+                bordersIdArray.push(territory.id)
+              }
+            }
+          }
+        }
+      }
+      if(highlightedBorders != []){
+        clearHighlights(highlightedBorders)
+      }
+      highlightBorders(bordersIdArray)
+      setHighlightedBorders(bordersIdArray)
+    }
+
+    const highlightBorders = function(bordersIdArray){  
+         
+      //Highlights surrounding territories in hotpink
+      for(let borderId of bordersIdArray){
+        const newID = borderId
+        var style = document.createElement('style');
+        style.setAttribute('id', newID)
+        style.innerHTML = `#${newID} { fill: dodgerblue;
+        }`;
+        document.head.appendChild(style);
+      }
+    }
+
+    const clearHighlights = function(bordersIdArray){
+      for(let borderId of bordersIdArray){
+        var element = document.getElementById(borderId);
+        element.parentNode.removeChild(element);
+      }
+  
+    }
+
+    const territoryColours = function(){
+      if(gameState != null){
+        for(let territory of gameState.GameState){
+          if(territory.occupier === "player1"){
+            const territoryElement = document.querySelector(`[name="${territory.name}"]`)
+            territoryElement.setAttribute("style", "fill: green")
+          } 
+          if(territory.occupier === "player2"){
+            const territoryElement = document.querySelector(`[name="${territory.name}"]`)
+            territoryElement.setAttribute("style", "fill: red")
+          }
+          if(territory.name === currentTerritory.name){
+            const territoryElement = document.querySelector(`[name="${territory.name}"]`)
+            territoryElement.setAttribute("style", "fill: hotpink")
+            getBorders(currentTerritory.borders)
+          }
+          
+          
+        }
+      }
+    }
+
   
     const layerProps = {
       onClick: ({ target }) => {
         setSelectedTerritory({
           "id": target.attributes.id.value
         })
+        getBorders(target.attributes.id.value)
       },
     };
 
