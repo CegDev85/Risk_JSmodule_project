@@ -81,24 +81,24 @@ const GameMap = ({players}) => {
       setGameState(distributionDone);
     }
 
-    const getBorderIDsArray = function(id) {
+    // const getBorderIDsArray = function(id) {
 
-      let bordersIdArray = []
+    //   let bordersIdArray = []
 
-      for(let territory of gameState.GameState){
-        if(id === territory.id){
-          let borderNamesArray = territory.borders
-          for(let borderName of borderNamesArray){
-            for(let territory of gameState.GameState){
-              if (territory.name === borderName){ 
-                bordersIdArray.push(territory.id)
-              }
-            }
-          }
-        }
-      }
-      return bordersIdArray
-    }
+    //   for(let territory of gameState.GameState){
+    //     if(id === territory.id){
+    //       let borderNamesArray = territory.borders
+    //       for(let borderName of borderNamesArray){
+    //         for(let territory of gameState.GameState){
+    //           if (territory.name === borderName){ 
+    //             bordersIdArray.push(territory.id)
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    //   return bordersIdArray
+    // }
 
     // const getBorders = function(id) {
 

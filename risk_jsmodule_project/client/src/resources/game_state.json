@@ -61,7 +61,7 @@
     "name": "Florida",
     "occupier": "empty",
     "troops": 0,
-    "borders": ["Georgia, Alabama"]
+    "borders": ["Georgia", "Alabama"]
     },
     {
     "id": "us-ga",
