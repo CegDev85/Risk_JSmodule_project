@@ -16,15 +16,19 @@ const GameMap = ({players}) => {
 
     useEffect(() => {
       setGameState({...GameState})
+      console.log('Look players!')
+      console.log(players);
     },[])
 
     useEffect(() => {
-      if(selectedTerritory !== 'None')
+      if(selectedTerritory !== 'None'){
         for(let i=0; i<gameState.GameState.length; i++){
           if(selectedTerritory.id === gameState.GameState[i].id){
             setCurrentTerritory(gameState.GameState[i]);
           }
         }
+        setSelectedBorders(getBorders(selectedTerritory.id))
+      }
     }, [selectedTerritory])
 
     //Highlight the bordering states
@@ -45,27 +49,35 @@ const GameMap = ({players}) => {
       if(gameState){                    
         territoryInit();
       }
-  }, [players])
+  // }, [players])
+    }, [gameState])
 
 
     const territoryInit = () => {
       //There are 49 states, which need to be split amongst players. 
-      const noOfPlayers = players.length;
-      const noTer = gameState.GameState.length;
-      let tempState = gameState;
+      if(players){
+        const noOfPlayers = players.length;
+        const noTer = gameState.GameState.length;
+        let tempState = gameState;
 
-      for(let i=0; i<noTer; i++){
-        let tempTer = {
-          'name': gameState.GameState[i].name,
-          'id': gameState.GameState[i].id,
-          'occupier': players[Math.floor(Math.random()*noOfPlayers)],
-          'troops': 0
-        };
-        tempState.GameState.push(tempTer)
+        for(let i=0; i<noTer; i++){
+          // console.log("Setting occupier...")
+          let tempTer = {
+            'name': gameState.GameState[i].name,
+            'id': gameState.GameState[i].id,
+            'occupier': players[Math.floor(Math.random()*noOfPlayers)],
+            'troops': 0
+          };
+          tempState.GameState.push(tempTer)
+        }
+        tempState.GameState.splice(0, noTer);
+        setGameState(tempState);
+        troopsInit();
       }
-      tempState.GameState.splice(0, noTer);
-      setGameState(tempState);
-      troopsInit();
+      // else{
+      //   console.log('swing and a miss')
+      //   territoryInit();
+      // }
     }
 
     const troopsInit = () => {
@@ -95,14 +107,13 @@ const GameMap = ({players}) => {
     const layerProps = {
       onClick: ({ target }) => {
         setSelectedTerritory({
-          "territory": target.attributes.name.value,
-          "occupier": target.attributes.occupier.value,
-          "troops": target.attributes.troops.value,
-          "borders": getBorders(target.attributes.id.value),
+          // "territory": target.attributes.name.value,
+          // "occupier": target.attributes.occupier.value,
+          // "troops": target.attributes.troops.value,
+          // "borders": getBorders(target.attributes.id.value),
           "id": target.attributes.id.value
         })
         clearHighlights()
-        setSelectedBorders(getBorders(target.attributes.id.value))
       },
     };
 
