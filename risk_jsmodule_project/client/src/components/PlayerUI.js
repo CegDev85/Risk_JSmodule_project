@@ -107,7 +107,8 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
         }
         else{
             if(refinforcements > 0){
-                incrementTroops();
+                // incrementCurrentTroops(1);
+                incrementTroops(1, currentTerritory)
                 setReinforcements(refinforcements-1);
             }
             else{
@@ -116,11 +117,16 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
         }
     }
 
-    const commitTroops = (number) => {
-        console.log(number);
-        setTroopsInPlay(parseInt(number));
+    const commitTroops = (noTroops) => {
+        if(targetTerritory.isFriendly){
+            // Add/Subtract noTroops
+            incrementTroops(-parseInt(noTroops), currentTerritory);
+            incrementTroops(parseInt(noTroops), targetTerritory.territory);
+        }
+        else{
+            // Do fight. 
 
-        //...
+        }
     }
 
     const handleCurrent = () => {

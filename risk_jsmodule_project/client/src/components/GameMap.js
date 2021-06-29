@@ -172,11 +172,12 @@ const GameMap = ({players}) => {
 
     }
 
-    const incrementTroops = () => {
-        let tempTer = currentTerritory;
-        tempTer.troops += 1; 
-        gameState.GameState.splice(gameState.GameState.indexOf(currentTerritory), 1);
-        gameState.GameState.push(tempTer);
+
+    const incrementTroops = (n, territory) => {
+      let tempTer = territory;
+      tempTer.troops += n;
+      gameState.GameState.splice(gameState.GameState.indexOf(territory), 1);
+      gameState.GameState.push(tempTer);
     }
 
 
