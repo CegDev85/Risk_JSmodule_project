@@ -38,7 +38,6 @@ const App = () => {
         </Switch>
         </>
       </Router>
-
       {/* <MapContainer players={players}/> */}
 
     </div>

@@ -2,6 +2,38 @@
   text-align:center;
 }
 
+.leaderboard { 
+  text-align: center;
+  display: flex;
+  justify-content:center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: larger;
+  
+}
+
+.country-container {
+ padding-top: 150px;
+}
+
+.welcome-container {
+  font-family:monospace;
+  font-size:xx-large;
+}
+
+.nav-bar {
+
+ 
+}
+
+
+
+/* .player-list {
+  
+  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+} */
+
 
 body{
   background-image: url("./mapbackground2.jpg");
@@ -10,8 +42,6 @@ body{
 }
 
 
-<<<<<<< HEAD
-=======
 
 
 
@@ -51,7 +81,6 @@ body{
 } */
 
 
->>>>>>> feature/borders
 path{
   fill:gray;
   cursor: pointer;
