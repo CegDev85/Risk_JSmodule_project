@@ -1,21 +1,34 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const PlayerUI = ({currentTerritory, gameState, players}) => {
 
+    const [playerTurn, setPlayerTurn] = useState(null);
+    const [gameRunning, SetGameRunning] = useState(true);
+
+    const getBorders = (territory) => {
+        if (territory !== 'None'){
+            return gameState.GameState.filter(GameState => territory.borders.includes(GameState.name))
+        }
+    }
+
     const getFriendly = () => {
+        let borders = getBorders(currentTerritory);
+        let friendlyBorders = borders.filter(border => border.occupier == currentTerritory.occupier)
+        let friendlyBorderListItems = friendlyBorders.map(b => <li>{b.name}</li>)
         return (
             <ul>
-                <li>Sample Territory</li>
-                <li>Sample Territory</li>
+                {friendlyBorderListItems}
             </ul>
         )
     }
     const getEnemy = () => {
+        let borders = getBorders(currentTerritory);
+        let enemyBorders = borders.filter(border => border.occupier != currentTerritory.occupier)
+        let enemyBorderListItems = enemyBorders.map(b => <li>{b.name}</li>)
         return (
             
             <ul>
-                <li>Sample Territory</li>
-                <li>Sample Territory</li>
+                {enemyBorderListItems}
             </ul>
         )
     }

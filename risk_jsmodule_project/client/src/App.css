@@ -118,6 +118,7 @@ path:focus{
   border-radius: 45%;
   border: solid #b5a642 10px;
   margin:20px;
+  color: white;
 }
 
 .ui-end-turn{
