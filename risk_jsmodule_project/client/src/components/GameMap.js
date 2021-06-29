@@ -81,7 +81,7 @@ const GameMap = ({players}) => {
       setGameState(distributionDone);
     }
 
-    const getBorders = function(id) {
+    const getBorderIDsArray = function(id) {
 
       let bordersIdArray = []
 
@@ -97,49 +97,84 @@ const GameMap = ({players}) => {
           }
         }
       }
-      if(highlightedBorders != []){
-        clearHighlights(highlightedBorders)
-      }
-      highlightBorders(bordersIdArray)
-      setHighlightedBorders(bordersIdArray)
+      return bordersIdArray
     }
 
-    const highlightBorders = function(bordersIdArray){  
+    // const getBorders = function(id) {
+
+    //   let bordersIdArray = []
+
+    //   for(let territory of gameState.GameState){
+    //     if(id === territory.id){
+    //       let borderNamesArray = territory.borders
+    //       for(let borderName of borderNamesArray){
+    //         for(let territory of gameState.GameState){
+    //           if (territory.name === borderName){ 
+    //             bordersIdArray.push(territory.id)
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    //   if(highlightedBorders != []){
+    //     clearHighlights(highlightedBorders)
+    //   }
+    //   highlightBorders(bordersIdArray)
+    //   setHighlightedBorders(bordersIdArray)
+    // }
+
+    // const highlightBorders = function(bordersIdArray){  
          
-      //Highlights surrounding territories in hotpink
-      for(let borderId of bordersIdArray){
-        const newID = borderId
-        var style = document.createElement('style');
-        style.setAttribute('id', newID)
-        style.innerHTML = `#${newID} { fill: dodgerblue;
-        }`;
-        document.head.appendChild(style);
-      }
-    }
+    //   //Highlights surrounding territories in hotpink
+    //   for(let borderId of bordersIdArray){
+    //     const newID = borderId
+    //     var style = document.createElement('style');
+    //     style.setAttribute('id', newID)
+    //     style.innerHTML = `#${newID} { fill: dodgerblue;
+    //     }`;
+    //     document.head.appendChild(style);
+    //   }
+    // }
 
-    const clearHighlights = function(bordersIdArray){
-      for(let borderId of bordersIdArray){
-        var element = document.getElementById(borderId);
-        element.parentNode.removeChild(element);
-      }
+    // const clearHighlights = function(bordersIdArray){
+    //   for(let borderId of bordersIdArray){
+    //     var element = document.getElementById(borderId);
+    //     element.parentNode.removeChild(element);
+    //   }
   
-    }
+    // }
 
     const territoryColours = function(){
       if(gameState != null){
         for(let territory of gameState.GameState){
           if(territory.occupier === "player1"){
             const territoryElement = document.querySelector(`[name="${territory.name}"]`)
-            territoryElement.setAttribute("style", "fill: green")
+            territoryElement.setAttribute("style", "fill: coral")
           } 
           if(territory.occupier === "player2"){
             const territoryElement = document.querySelector(`[name="${territory.name}"]`)
-            territoryElement.setAttribute("style", "fill: red")
+            territoryElement.setAttribute("style", "fill: lightblue")
           }
           if(territory.name === currentTerritory.name){
             const territoryElement = document.querySelector(`[name="${territory.name}"]`)
             territoryElement.setAttribute("style", "fill: hotpink")
-            getBorders(currentTerritory.borders)
+            
+            const borders = currentTerritory.borders
+            console.log(borders)
+            for(let border of borders){
+              for(let territory of gameState.GameState){
+
+                if(border === territory.name){
+                  console.log(territory.name)
+                  const territoryElement = document.querySelector(`[aria-label="${territory.name}"]`)
+                  
+                  territoryElement.setAttribute("style", "fill: lightgoldenrodyellow")
+                  console.log(territoryElement)
+                }
+              }
+            }
+            
+          
           }
           
           
@@ -153,7 +188,7 @@ const GameMap = ({players}) => {
         setSelectedTerritory({
           "id": target.attributes.id.value
         })
-        getBorders(target.attributes.id.value)
+        // getBorders(target.attributes.id.value)
       },
     };
 
