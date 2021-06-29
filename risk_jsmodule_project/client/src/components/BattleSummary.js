@@ -5,7 +5,7 @@ function BattleSummary({trigger, setTrigger, battleReport}) {
     const territoryLost = () => {
         if(battleReport.territoryTaken){
             return(
-                <p>TERRITORY TAKEN!</p>
+                <h3 className='winner-stamp'>TERRITORY TAKEN!</h3>
             );
         }
         return null;
@@ -25,7 +25,7 @@ function BattleSummary({trigger, setTrigger, battleReport}) {
                 <p>casualties: {battleReport.defendingCasualties}</p>
                 <br />
                 {territoryLost()}
-                <button onClick={() => setTrigger(false)}>Cancel</button>
+                <button className='close-summary' onClick={() => setTrigger(false)}>X</button>
             </div>
         </div>
     ): '';

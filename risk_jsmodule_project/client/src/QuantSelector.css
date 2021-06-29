@@ -4,25 +4,55 @@
      left: 0;
      height: 100vh;
      width: 100%;
-     background-color: rgba(0,0,0,0.2);
+     background-color: rgba(0,0,0,0.5);
      display: flex;
      justify-content: center;
      align-items: center;
-    
+     animation-name: zoomOut;
+     animation-duration: 0.25s;
+}
+
+@keyframes zoomOut{
+    0%{transform: scale(120%);}
+    100%{transform: scale(100%);}
 }
 
 .popup-inner{
     position: relative;
+    border-radius: 15px;
     padding: 10px;
     width: 100%;
     max-width: 400px;
     background-color: rgb(160, 115, 57);
+    border: solid black 10px;
+}
+
+.winner-stamp{
+    font-family: BigShoulders;
+    font-size: 38px;
+    color: red;
+    transform: rotate(-35deg);
+    padding: 10px;
+}
+
+.close-summary{
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    border-radius: 90%;
+    background-color: rgb(191, 60, 20);
+    color: white;
 }
 
 @font-face {
     font-family: Kalamimport;
     src: url("./Kalam-Bold.ttf");
 }
+
+@font-face {
+    font-family: BigShoulders;
+    src: url("./resources/BigShouldersStencilDisplay-ExtraBold.ttf");
+  }
 
 body {
     font-family:Kalamimport
