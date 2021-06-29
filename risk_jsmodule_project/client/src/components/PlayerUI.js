@@ -64,7 +64,13 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
     const getFriendly = () => {
         let borders = getBorders(currentTerritory);
         let friendlyBorders = borders.filter(border => border.occupier == currentTerritory.occupier)
-        let friendlyBorderListItems = friendlyBorders.map(b => <li key={b.id}> <button onClick={() => handleTargetTerritory(b.id, true)}>{b.name}</button></li>)
+        let friendlyBorderListItems = null;
+        if(currentTerritory.occupier === playerTurn){
+            friendlyBorderListItems = friendlyBorders.map(b => <li key={b.id}> <button onClick={() => handleTargetTerritory(b.id, true)}>{b.name}</button></li>)
+        }
+        else{
+            friendlyBorderListItems = friendlyBorders.map(b => <li key={b.id}>{b.name}</li>)
+        }
         return (
             <ul>
                 {friendlyBorderListItems}
@@ -74,7 +80,12 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
     const getEnemy = () => {
         let borders = getBorders(currentTerritory);
         let enemyBorders = borders.filter(border => border.occupier != currentTerritory.occupier)
-        let enemyBorderListItems = enemyBorders.map(b => <li key={b.id}><button onClick={() => handleTargetTerritory(b.id, false)}>{b.name}</button></li>)
+        let enemyBorderListItems = null;
+        if(currentTerritory.occupier === playerTurn){
+            enemyBorderListItems = enemyBorders.map(b => <li key={b.id}><button onClick={() => handleTargetTerritory(b.id, false)}>{b.name}</button></li>);
+        }else{
+            enemyBorderListItems = enemyBorders.map(b => <li key={b.id}>{b.name}</li>)
+        }
         return (
             
             <ul>
@@ -145,6 +156,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             <div className='ui-end-turn'>
                     <button onClick={assignTurn}>END TURN</button>
             </div>
+            {targetTerritory.territory ? <h5>IM HERE</h5> : null}
         </div>
     )
 }
