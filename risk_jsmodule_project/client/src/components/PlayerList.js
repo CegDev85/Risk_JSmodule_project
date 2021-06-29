@@ -6,7 +6,7 @@ const PlayerList = ({ players }) => {
     return (
         <div className="player-list">
             
-            <h2>LEADERBOARD</h2>
+            <h2>SCOREBOARD</h2>
             <hr></hr>
             <ul>
                 {players.map(player => {

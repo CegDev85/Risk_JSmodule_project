@@ -172,12 +172,19 @@ const GameMap = ({players}) => {
 
     }
 
+    const incrementTroops = () => {
+        let tempTer = currentTerritory;
+        tempTer.troops += 1; 
+        gameState.GameState.splice(gameState.GameState.indexOf(currentTerritory), 1);
+        gameState.GameState.push(tempTer);
+    }
+
 
     return (
       <div>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div>
-            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players}/>
+            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops}/>
             </div>
             </div>
       );

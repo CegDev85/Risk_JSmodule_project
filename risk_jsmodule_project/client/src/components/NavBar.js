@@ -9,7 +9,7 @@ const NavBar = () => {
      <div className="nav-bar">
         {/* <ul>
             <li> */}
-                <Link to="/">Home</Link> <Link to="/leaderboard">Leaderboard</Link>
+                <Link to="/">Home</Link> <Link to="/leaderboard">Scoreboard</Link>
             {/* </li>
             <li> */}
                 {/* <Link to="/leaderboard">Leaderboard</Link> */}
