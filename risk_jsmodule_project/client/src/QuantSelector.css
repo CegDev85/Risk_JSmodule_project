@@ -9,7 +9,7 @@
      justify-content: center;
      align-items: center;
      animation-name: zoomOut;
-     animation-duration: 0.25s;
+     animation-duration: 0.3s;
 }
 
 @keyframes zoomOut{
