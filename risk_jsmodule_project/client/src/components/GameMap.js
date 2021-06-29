@@ -4,6 +4,7 @@ import usa from '../resources/usa.json'
 import GameState from '../resources/game_state.json'
 import PlayerUI from './PlayerUI';
 
+
 const GameMap = ({players}) => {
   
   
@@ -11,26 +12,24 @@ const GameMap = ({players}) => {
     const [currentTerritory, setCurrentTerritory] = useState('None'); //Finds game-state equivalent of selectedTerritory
     // new state added to hold data on 'layers' at a high enough level that they can be manipulated.  ID matches that from VectorMap JSON
     const [gameState, setGameState] = useState(null);
-    const [highlightedBorders, setHighlightedBorders] = useState([]);
 
     useEffect(() => {
       setGameState({...GameState})
+      console.log('Look players!')
+      console.log(players);
     },[])
 
     useEffect(() => {
-      if(selectedTerritory !== 'None')
-        for(let i=0; i<gameState.GameState.length; i++){
-          if(selectedTerritory.id === gameState.GameState[i].id){
-            setCurrentTerritory(gameState.GameState[i]);
-          }
-        }
+      if(selectedTerritory !== 'None'){
+        setCurrentTerritory(gameState.GameState.filter(GameState => GameState.id === selectedTerritory.id)[0])
+      }
     }, [selectedTerritory])
 
     useEffect(() => {
       if(gameState){                    
         territoryInit();
       }
-  }, [players])
+    }, [gameState])
 
     useEffect(() => [
       territoryColours()
@@ -39,23 +38,30 @@ const GameMap = ({players}) => {
 
     const territoryInit = () => {
       //There are 49 states, which need to be split amongst players. 
-      const noOfPlayers = players.length;
-      const noTer = gameState.GameState.length;
-      let tempState = gameState;
+      if(players){
+        const noOfPlayers = players.length;
+        const noTer = gameState.GameState.length;
+        let tempState = gameState;
 
-      for(let i=0; i<noTer; i++){
-        let tempTer = {
-          'name': gameState.GameState[i].name,
-          'id': gameState.GameState[i].id,
-          'occupier': players[Math.floor(Math.random()*noOfPlayers)],
-          'troops': 0,
-          'borders': gameState.GameState[i].borders
-        };
-        tempState.GameState.push(tempTer)
+        for(let i=0; i<noTer; i++){
+          // console.log("Setting occupier...")
+          let tempTer = {
+            'name': gameState.GameState[i].name,
+            'id': gameState.GameState[i].id,
+            'occupier': players[Math.floor(Math.random()*noOfPlayers)],
+            'troops': 0,
+            'borders': gameState.GameState[i].borders
+          };
+          tempState.GameState.push(tempTer)
+        }
+        tempState.GameState.splice(0, noTer);
+        setGameState(tempState);
+        troopsInit();
       }
-      tempState.GameState.splice(0, noTer);
-      setGameState(tempState);
-      troopsInit();
+      else{
+        console.log('swing and a miss')
+        territoryInit();
+      }
     }
 
     const troopsInit = () => {
@@ -81,125 +87,69 @@ const GameMap = ({players}) => {
       setGameState(distributionDone);
     }
 
-    // const getBorderIDsArray = function(id) {
-
-    //   let bordersIdArray = []
-
-    //   for(let territory of gameState.GameState){
-    //     if(id === territory.id){
-    //       let borderNamesArray = territory.borders
-    //       for(let borderName of borderNamesArray){
-    //         for(let territory of gameState.GameState){
-    //           if (territory.name === borderName){ 
-    //             bordersIdArray.push(territory.id)
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    //   return bordersIdArray
-    // }
-
-    // const getBorders = function(id) {
-
-    //   let bordersIdArray = []
-
-    //   for(let territory of gameState.GameState){
-    //     if(id === territory.id){
-    //       let borderNamesArray = territory.borders
-    //       for(let borderName of borderNamesArray){
-    //         for(let territory of gameState.GameState){
-    //           if (territory.name === borderName){ 
-    //             bordersIdArray.push(territory.id)
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    //   if(highlightedBorders != []){
-    //     clearHighlights(highlightedBorders)
-    //   }
-    //   highlightBorders(bordersIdArray)
-    //   setHighlightedBorders(bordersIdArray)
-    // }
-
-    // const highlightBorders = function(bordersIdArray){  
-         
-    //   //Highlights surrounding territories in hotpink
-    //   for(let borderId of bordersIdArray){
-    //     const newID = borderId
-    //     var style = document.createElement('style');
-    //     style.setAttribute('id', newID)
-    //     style.innerHTML = `#${newID} { fill: dodgerblue;
-    //     }`;
-    //     document.head.appendChild(style);
-    //   }
-    // }
-
-    // const clearHighlights = function(bordersIdArray){
-    //   for(let borderId of bordersIdArray){
-    //     var element = document.getElementById(borderId);
-    //     element.parentNode.removeChild(element);
-    //   }
-  
-    // }
-
     const territoryColours = function(){
       if(gameState != null){
         for(let territory of gameState.GameState){
-          if(territory.occupier === "player1"){
+          if(territory.occupier === players[0]){
             const territoryElement = document.querySelector(`[name="${territory.name}"]`)
             territoryElement.setAttribute("style", "fill: coral")
-          } 
-          if(territory.occupier === "player2"){
+          } else if (territory.occupier === players[1]){
             const territoryElement = document.querySelector(`[name="${territory.name}"]`)
             territoryElement.setAttribute("style", "fill: lightblue")
           }
-          if(territory.name === currentTerritory.name){
+          if(currentTerritory != 'None'){
+          if (territory.name === currentTerritory.name){
             const territoryElement = document.querySelector(`[name="${territory.name}"]`)
             territoryElement.setAttribute("style", "fill: hotpink")
-            
-            const borders = currentTerritory.borders
-            console.log(borders)
-            for(let border of borders){
-              for(let territory of gameState.GameState){
-
-                if(border === territory.name){
-                  console.log(territory.name)
-                  const territoryElement = document.querySelector(`[aria-label="${territory.name}"]`)
-                  
-                  territoryElement.setAttribute("style", "fill: lightgoldenrodyellow")
-                  console.log(territoryElement)
-                }
+          }
+          const borders = currentTerritory.borders
+          for(let border of borders){
+            for(let territory of gameState.GameState){
+              if(border === territory.name){
+                let territoryElement = document.querySelector(`[aria-label="${territory.name}"]`)
+                territoryElement.setAttribute("style", "fill: lightgoldenrodyellow")
               }
             }
-            
-          
           }
-          
-          
         }
+        } 
       }
     }
+
+    
 
   
     const layerProps = {
       onClick: ({ target }) => {
         setSelectedTerritory({
+          // "territory": target.attributes.name.value,
+          // "occupier": target.attributes.occupier.value,
+          // "troops": target.attributes.troops.value,
+          // "borders": getBorders(target.attributes.id.value),
           "id": target.attributes.id.value
         })
-        // getBorders(target.attributes.id.value)
       },
     };
+
+    const incrementTroops = () => {
+        let tempTer = currentTerritory;
+        tempTer.troops += 1; 
+        gameState.GameState.splice(gameState.GameState.indexOf(currentTerritory), 1);
+        gameState.GameState.push(tempTer);
+    }
+
 
     return (
       <div>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div>
-            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players}/>
-          </div>
-      </div>
-  );
+            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops}/>
+            </div>
+            </div>
+      );
+
+
+
 }
 
 

@@ -2,16 +2,18 @@
 
 import React from 'react'
 import MapContainer from '../containers/MapContainer'
+import GameMap from './GameMap'
 
-const gameGrid = ({players}) => {
+const GameGrid = ({players}) => {
     return (
         <div>
            
-            <h1>This is the Game</h1>
-            <MapContainer players={players}/>
+            <h1>PLAN YOUR ATTACK!</h1>
+            {/* <MapContainer players={players}/> */}
+            <GameMap players={players}/>
             
         </div>
     )
 }
 
-export default gameGrid
+export default GameGrid

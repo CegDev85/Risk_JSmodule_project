@@ -18,6 +18,7 @@ const PlayerList = ({ players }) => {
                        <li>Territories: {player.Territories}</li>
                        <li>Victories: {player.Victories}</li>
                        <br></br>
+            
 
                         </>
                     )

@@ -8,16 +8,18 @@ import CountryContainer from './CountryContainer'
 
 
 
-const WelcomeContainer = ({addPlayer}) => {
+const WelcomeContainer = ({addPlayers}) => {
 
 
 
 
     return (
         <div className="welcome-container">
-            <h2>LITTLE RISK</h2>
-            <GameForm addPlayer={addPlayer}/>
-            <CountryContainer />
+            <h1>LITTLE RISK</h1>
+            <GameForm  addPlayersToState={addPlayers}/>
+            <div className="country-container">
+                <CountryContainer />
+            </div>
             
         </div>
     )

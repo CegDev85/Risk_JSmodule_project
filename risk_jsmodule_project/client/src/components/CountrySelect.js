@@ -14,7 +14,7 @@ const CountrySelect = ({countries, onCountrySelect}) => {
 
     return(
         <select onChange={handleChange}>
-            <option>Choose a country</option>
+            <option>SELECT A COUNTRY TO LEARN MORE</option>
             {countryOptions}
         </select>
     )

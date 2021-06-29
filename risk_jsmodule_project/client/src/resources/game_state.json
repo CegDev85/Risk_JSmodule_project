@@ -40,7 +40,7 @@
     "name": "Connecticut",
     "occupier": "empty",
     "troops": 0,
-    "borders": ["Oregon", "Arizona", "Nevada"]
+    "borders": ["New York", "Rhode Island", "Massachusetts"]
     },
     {
     "id": "us-dc",
