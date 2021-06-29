@@ -128,11 +128,78 @@ const GameMap = ({players}) => {
       },
     };
 
-    const incrementTroops = () => {
-        let tempTer = currentTerritory;
-        tempTer.troops += 1; 
-        gameState.GameState.splice(gameState.GameState.indexOf(currentTerritory), 1);
-        gameState.GameState.push(tempTer);
+    let bordersIdArray = []
+
+    const getBorders = function(id) {
+
+      for(let state of gameState.GameState){
+        if(id === state.id){
+          let borderNames = state.borders
+          for(let borderName of borderNames){
+            for(let state of gameState.GameState){
+              if (state.name === borderName){ 
+                bordersIdArray.push(state.id)
+              }
+            }
+          }
+        }
+      }
+      return bordersIdArray
+    }
+
+    
+
+    // const highlightStates = function(){
+
+    //   for(let state of gameState.GameState){
+    //     console.log(state.occupier)
+    //     if(state.occupier === "Player 1"){
+    //       const newID = "Player 1"
+    //       var style = document.createElement('style');
+    //       style.setAttribute('id', newID)
+    //       style.innerHTML = `#${newID} { fill: green;
+    //     }`;
+          
+    //     }
+    //   }
+
+    // }
+   
+    const highlightBorders = function(bordersIdArray){        
+      
+      //Highlights surrounding territories in hotpink
+      for(let borderId of bordersIdArray){
+        const newID = borderId
+        var style = document.createElement('style');
+        style.setAttribute('id', newID)
+        style.innerHTML = `#${newID} { fill: hotpink;
+        }`;
+        document.head.appendChild(style);
+      }
+    }
+
+    //Clears existing highlights when new US state is clicked
+    const clearHighlights = function(){
+      for(let borderId of selectedBorders){
+        var element = document.getElementById(borderId);
+        element.parentNode.removeChild(element);
+      }
+
+    }
+
+
+    const incrementTroops = (n, territory) => {
+      let tempTer = territory;
+      tempTer.troops += n;
+      gameState.GameState.splice(gameState.GameState.indexOf(territory), 1);
+      gameState.GameState.push(tempTer);
+    }
+
+    const changeOccupier = (winner, territory) => {
+      let tempTer = territory;
+      tempTer.occupier = winner;
+      gameState.GameState.splice(gameState.GameState.indexOf(territory), 1);
+      gameState.GameState.push(tempTer);
     }
 
 
@@ -140,7 +207,7 @@ const GameMap = ({players}) => {
       <div>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div>
-            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops}/>
+            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops} changeOccupier={changeOccupier}/>
             </div>
             </div>
       );

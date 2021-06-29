@@ -13,10 +13,16 @@ const CountrySelect = ({countries, onCountrySelect}) => {
     })
 
     return(
-        <select onChange={handleChange}>
-            <option>SELECT A COUNTRY TO LEARN MORE</option>
-            {countryOptions}
-        </select>
+        <div className="country-select">
+            <div className="select">
+            <select onChange={handleChange}>
+                <option>Select a country to learn some facts</option>
+                {countryOptions}
+            </select>
+            </div>
+        </div>
+        
+
     )
 
 }

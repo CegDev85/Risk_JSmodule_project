@@ -4,23 +4,21 @@
 const PlayerList = ({ players }) => {
 
     return (
-        <div id="player-list">
-            <h2>LEADERBOARD</h2>
-            <hr></hr>
+        <div className="player-list">
+            
+            <h2>SCOREBOARD</h2>
             <ul>
                 {players.map(player => {
                     return(
-                        <>
-                       <li >Name: {player.name}</li>
-                       <li>Troops Deployed: {player.TroopsDeployed}</li>
-                       <li>Troops Lost: {player.TroopsLost}</li>
-                       <li>Troops Defeated: {player.TroopsDefeated}</li>
-                       <li>Territories: {player.Territories}</li>
-                       <li>Victories: {player.Victories}</li>
+                    <>
+                       <p>Name: {player.name}</p>
+                       <p>Troops Deployed: {player.TroopsDeployed}</p>
+                       <p>Troops Lost: {player.TroopsLost}</p>
+                       <p>Troops Defeated: {player.TroopsDefeated}</p>
+                       <p>Territories: {player.Territories}</p>
+                       <p>Victories: {player.Victories}</p>
                        <br></br>
-            
-
-                        </>
+                    </>
                     )
                 })}
             </ul>

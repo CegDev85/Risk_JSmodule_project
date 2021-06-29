@@ -16,12 +16,14 @@ const WelcomeContainer = ({addPlayers}) => {
     return (
         <div className="welcome-container">
             <h1>LITTLE RISK</h1>
+            
             <GameForm  addPlayersToState={addPlayers}/>
             <div className="country-container">
                 <CountryContainer />
             </div>
+            </div>
             
-        </div>
+        
     )
 }
 

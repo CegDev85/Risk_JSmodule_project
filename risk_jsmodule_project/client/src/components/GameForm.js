@@ -42,13 +42,6 @@ const GameForm = ({addPlayersToState}) => {
         setPlayers(temp);
     }
         
-
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     postPlayer(players).then((data) => {
-    //         addPlayer(data);
-    //     })
-    // }
     const handleSubmit = (event) => {
         event.preventDefault();
         let player_1 = event.target.player1.value;
@@ -83,15 +76,15 @@ const GameForm = ({addPlayersToState}) => {
 
     return (
         <div className="game-form">
-            {/* <p>This is the game form</p> */}
             <br></br>
             <br></br>
             <form onSubmit={handleSubmit} method="post" >
                 <label htmlFor="player1">Player 1:    </label>
-                <input type="text" id="player1" name="player1"></input>    
+                <input type="text" id="player1" name="player1" placeholder="Enter your Army name"></input>    
                 <label htmlFor="player2">Player 2:    </label>
-                <input type="text" id="player2" name="player2"></input>
-                <input type="submit" value="Begin Game"></input>
+                <input type="text" id="player2" name="player2" placeholder="Enter your Army name"></input>
+                <input className="input" type="submit" value="Begin Game"></input>
+                
             </form>
         </div>
     )
