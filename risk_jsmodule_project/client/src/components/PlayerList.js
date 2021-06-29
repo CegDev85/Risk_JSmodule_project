@@ -7,7 +7,7 @@ const PlayerList = ({ players }) => {
         <div className="player-list">
             
             <h2>SCOREBOARD</h2>
-            <hr></hr>
+            {/* <hr></hr> */}
             <ul>
                 {players.map(player => {
                     return(
@@ -19,8 +19,8 @@ const PlayerList = ({ players }) => {
                        <p>Territories: {player.Territories}</p>
                        <p>Victories: {player.Victories}</p>
                        <br></br>
-                       <hr>
-                       </hr>
+                       {/* <hr>
+                       </hr> */}
             
 
                         </>
