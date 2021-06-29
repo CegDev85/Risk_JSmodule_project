@@ -91,7 +91,8 @@ const GameForm = ({addPlayersToState}) => {
                 <input type="text" id="player1" name="player1" placeholder="Enter your Army name"></input>    
                 <label htmlFor="player2">Player 2:    </label>
                 <input type="text" id="player2" name="player2" placeholder="Enter your Army name"></input>
-                <input type="submit" value="Begin Game"></input>
+                <input className="input" type="submit" value="Begin Game"></input>
+                
             </form>
         </div>
     )

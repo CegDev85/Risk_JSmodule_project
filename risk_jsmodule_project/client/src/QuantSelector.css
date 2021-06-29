@@ -8,12 +8,22 @@
      display: flex;
      justify-content: center;
      align-items: center;
+    
 }
 
 .popup-inner{
     position: relative;
-    padding: 32px;
+    padding: 10px;
     width: 100%;
-    max-width: 640px;
-    background-color: #FFFF;
+    max-width: 400px;
+    background-color: rgb(160, 115, 57);
+}
+
+@font-face {
+    font-family: Kalamimport;
+    src: url("./Kalam-Bold.ttf");
+}
+
+body {
+    font-family:Kalamimport
 }
