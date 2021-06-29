@@ -128,11 +128,19 @@ const GameMap = ({players}) => {
       },
     };
 
-    const incrementTroops = () => {
-        let tempTer = currentTerritory;
-        tempTer.troops += 1; 
-        gameState.GameState.splice(gameState.GameState.indexOf(currentTerritory), 1);
-        gameState.GameState.push(tempTer);
+    
+    const incrementTroops = (n, territory) => {
+      let tempTer = territory;
+      tempTer.troops += n;
+      gameState.GameState.splice(gameState.GameState.indexOf(territory), 1);
+      gameState.GameState.push(tempTer);
+    }
+
+    const changeOccupier = (winner, territory) => {
+      let tempTer = territory;
+      tempTer.occupier = winner;
+      gameState.GameState.splice(gameState.GameState.indexOf(territory), 1);
+      gameState.GameState.push(tempTer);
     }
 
 
@@ -140,7 +148,7 @@ const GameMap = ({players}) => {
       <div>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div>
-            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops}/>
+            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops} changeOccupier={changeOccupier}/>
             </div>
             </div>
       );
