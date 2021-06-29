@@ -73,15 +73,22 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
         let friendlyBorders = borders.filter(border => border.occupier == currentTerritory.occupier)
         let friendlyBorderListItems = null;
         if(currentTerritory.occupier === playerTurn){
-            friendlyBorderListItems = friendlyBorders.map(b => <li key={b.id}> <button onClick={() => handleTargetTerritory(b.id, true)}>{b.name}</button></li>)
+            friendlyBorderListItems = friendlyBorders.map(b => <li key={b.id}>
+                <div className="friendly-border-list">
+                 <button onClick={() => handleTargetTerritory(b.id, true)}>{b.name}</button>
+                 </div>
+                 </li>)
         }
         else{
             friendlyBorderListItems = friendlyBorders.map(b => <li key={b.id}>{b.name}</li>)
         }
         return (
-            <ul>
-                {friendlyBorderListItems}
-            </ul>
+            <div>
+                <ul>
+                <li>{friendlyBorderListItems}</li>
+                </ul>
+            
+            </div>
         )
     }
     const getEnemy = () => {
@@ -89,15 +96,20 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
         let enemyBorders = borders.filter(border => border.occupier != currentTerritory.occupier)
         let enemyBorderListItems = null;
         if(currentTerritory.occupier === playerTurn){
-            enemyBorderListItems = enemyBorders.map(b => <li key={b.id}><button onClick={() => handleTargetTerritory(b.id, false)}>{b.name}</button></li>);
+            enemyBorderListItems = enemyBorders.map(b => <li key={b.id}>
+                <div className="enemy-border-items">
+                <button onClick={() => handleTargetTerritory(b.id, false)}>{b.name}</button>
+                </div>
+                </li>);
         }else{
             enemyBorderListItems = enemyBorders.map(b => <li key={b.id}>{b.name}</li>)
         }
         return (
-            
+            <div className="enemy-border-items" >
             <ul>
-                {enemyBorderListItems}
+                <li>{enemyBorderListItems}</li>
             </ul>
+            </div>
         )
     }
 

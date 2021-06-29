@@ -2,37 +2,134 @@
   text-align:center;
 }
 
-.leaderboard { 
+.leaderboard  { 
   text-align: center;
   display: flex;
   justify-content:center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: larger;
-  
+  /* font-family:monospace; */
+  font-size:150%;
+  font-style:italic;
 }
 
+.player-list > h2 {
+  font-style: normal;
+  font-family:SpecialEliteimport;
+  font-size:400%;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  background-color:burlywood;
+  box-shadow: 5px 5px 5px black;
+  margin-bottom: 2px;
+}
+
+.player-list > ul > p {
+  font-family:Kalamimport
+}
+
+@font-face {
+  font-family: Kalamimport;
+  src: url("./Kalam-Bold.ttf");
+}
+
+@font-face {
+  font-family: SpecialEliteimport;
+  src: url("./SpecialElite-Regular.ttf")
+}
+
+
 .country-container {
- padding-top: 150px;
+ padding-top: 100px;
 }
 
 .welcome-container {
-  font-family:monospace;
+
+  font-family:Kalamimport;
   font-size:xx-large;
+  display:block;
+  
+}
+
+
+
+.welcome-container > h1 {
+  font-family:SpecialEliteimport;
+  font-size:400%;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  background-color:burlywood;
+  box-shadow: 5px 5px 5px black;
+  margin-bottom: 2px;
+  text-align: center;
+  
+  /* display: flex;
+  justify-content:center;
+  font-family:monospace;
+  font-size:150%;
+  font-style:italic; */
+}
+
+.gamegrid > h1 {
+  font-family: SpecialEliteimport;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  background-color:burlywood;
+  box-shadow: 5px 5px 5px black;
+  margin-bottom: 2px;
 }
 
 .nav-bar {
-
+  display: flex;
+  justify-content: space-around;
  
 }
 
+a {
 
-
-/* .player-list {
-  
-  text-align: center;
-  display: flex;
-  justify-content: flex-start;
-} */
+  /* text-decoration: none;
+  color: black;
+  display:block;
+  background-color:burlywood;
+  box-shadow: 5px 5px 5px black;
+  margin-bottom: 2px;
+  border: none;
+  font-size: larger;
+  padding-top: 0%; */
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  background-color:rgb(204, 155, 92);
+  box-shadow: 5px 5px 5px black;
+  margin-bottom: 2px;
+  font-size: larger;
+  font-family: Kalamimport;
+}
+.ui-end-turn > button {
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  background-color:rgb(204, 155, 92);
+  box-shadow: 5px 5px 5px black;
+  margin-bottom: 2px;
+  font-size: larger;
+  font-family: Kalamimport;
+}
 
 
 body{
@@ -117,10 +214,60 @@ path:focus{
   background-image: url('./resources/wood.jpeg');
   border-radius: 45%;
   border: solid #b5a642 10px;
-  margin:20px;
-  color: white;
+  margin:20px;;
+  font-size: larger;
+  color: rgb(255, 255, 255);
+  font-family: Kalamimport;
+  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
 }
 
-.ui-end-turn{
-  border-radius: 50%;
+.ui-distribute-refinforcements > button {
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  background-color:rgb(204, 155, 92);
+  box-shadow: 5px 5px 5px black;
+  margin-bottom: 2px;
+  font-size: larger;
+  font-family: Kalamimport;
 }
+
+
+.friendly-border-list > button {
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  background-color:rgb(204, 155, 92);
+  box-shadow: 5px 5px 5px black;
+  margin-bottom: 2px;
+  font-size: large;
+  font-family: Kalamimport;
+}
+
+.enemy-border-items > button {
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  background-color:rgb(204, 155, 92);
+  box-shadow: 5px 5px 5px black;
+  margin-bottom: 2px;
+  font-size: large;
+  font-family: Kalamimport;
+}
+
+.input {
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  background-color:rgb(204, 155, 92);
+  box-shadow: 5px 5px 5px black;
+  margin-bottom: 2px;
+  font-size: large;
+  font-family: Kalamimport;
+}
+
+
