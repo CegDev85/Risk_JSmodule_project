@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import QuantSelector from './QuantSelector';
 
 const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
 
@@ -6,19 +7,23 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
     const [gameRunning, SetGameRunning] = useState(false);
     const [refinforcements, setReinforcements] = useState(0);
     const [rounds, setRounds] = useState(-1);
-    const [loaded, setLoaded] = useState(false);
     const [targetTerritory, setTargetTerritory] = useState({"territory": null, "isFriendly": false})
+    const [quantitySelectorTrigger, setQuantitySelectorTrigger] = useState(false);
 
     useEffect(() => {
         assignTurn();
         SetGameRunning(true);
     }, [])
 
-    useEffect(() => {
+    useEffect(() => { 
         if(playerTurn){
             calcReinforcements(playerTurn);
         }
     }, [playerTurn])
+
+    useEffect(() => {
+        setTargetTerritory({"territory": null, "isFriendly": false})
+    },[currentTerritory])
 
     const assignTurn = () => {
         setRounds(rounds+1);
@@ -59,6 +64,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             "territory": gameState.GameState.filter(b => b.id === id)[0], 
             "isFriendly": isFriendly
         });
+        setQuantitySelectorTrigger(true);
     }
 
     const getFriendly = () => {
@@ -143,6 +149,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
 
 
     return (
+        <>
         <div className='user-interface'>
             <h1>{playerTurn?.name}</h1>
             <div className='ui-reinforcements'>
@@ -156,8 +163,11 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             <div className='ui-end-turn'>
                     <button onClick={assignTurn}>END TURN</button>
             </div>
-            {targetTerritory.territory ? <h5>IM HERE</h5> : null}
         </div>
+        <div className='input-handler'>
+            {targetTerritory.territory !== null? <QuantSelector trigger={quantitySelectorTrigger} setTrigger={setQuantitySelectorTrigger}/> : null}
+        </div>
+        </>
     )
 }
 
