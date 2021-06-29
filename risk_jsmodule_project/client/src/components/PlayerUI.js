@@ -165,7 +165,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             </div>
         </div>
         <div className='input-handler'>
-            {targetTerritory.territory !== null? <QuantSelector trigger={quantitySelectorTrigger} setTrigger={setQuantitySelectorTrigger}/> : null}
+            <QuantSelector trigger={quantitySelectorTrigger} setTrigger={setQuantitySelectorTrigger} target={targetTerritory}/>
         </div>
         </>
     )
