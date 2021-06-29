@@ -116,9 +116,6 @@ const GameMap = ({players}) => {
       }
     }
 
-    
-
-  
     const layerProps = {
       onClick: ({ target }) => {
         setSelectedTerritory({

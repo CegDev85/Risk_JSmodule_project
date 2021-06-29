@@ -132,14 +132,6 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops}) => {
             uiElement[0].setAttribute("style", "border-color: coral")
             console.log(uiElement[0])
 
-           
-            
-            
-
-            // const uiElement = document.querySelector(`[class="us_interface"]`)
-            // console.log(uiElement)
-            // uiElement.setAttribute("style", "fill: coral")
-
         }
         if(playerTurn == players[1]){
             console.log(uiElement[0])
