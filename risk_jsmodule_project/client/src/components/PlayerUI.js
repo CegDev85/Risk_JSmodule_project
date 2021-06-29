@@ -119,7 +119,6 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
         }
         else{
             if(refinforcements > 0){
-                // incrementCurrentTroops(1);
                 incrementTroops(1, currentTerritory)
                 setReinforcements(refinforcements-1);
             }

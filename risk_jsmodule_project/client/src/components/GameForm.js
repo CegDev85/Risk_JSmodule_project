@@ -42,13 +42,6 @@ const GameForm = ({addPlayersToState}) => {
         setPlayers(temp);
     }
         
-
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     postPlayer(players).then((data) => {
-    //         addPlayer(data);
-    //     })
-    // }
     const handleSubmit = (event) => {
         event.preventDefault();
         let player_1 = event.target.player1.value;
@@ -83,7 +76,6 @@ const GameForm = ({addPlayersToState}) => {
 
     return (
         <div className="game-form">
-            {/* <p>This is the game form</p> */}
             <br></br>
             <br></br>
             <form onSubmit={handleSubmit} method="post" >
