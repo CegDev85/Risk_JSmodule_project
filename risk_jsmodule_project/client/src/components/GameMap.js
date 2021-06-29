@@ -22,18 +22,13 @@ const GameMap = ({players}) => {
 
     useEffect(() => {
       if(selectedTerritory !== 'None'){
-        for(let i=0; i<gameState.GameState.length; i++){
-          if(selectedTerritory.id === gameState.GameState[i].id){
-            setCurrentTerritory(gameState.GameState[i]);
-          }
-        }
-        setSelectedBorders(getBorders(selectedTerritory.id))
+        setCurrentTerritory(gameState.GameState.filter(GameState => GameState.id === selectedTerritory.id)[0])
       }
     }, [selectedTerritory])
 
     //Highlight the bordering states
     useEffect(() => {
-      if(selectedBorders !== 'None'){
+      if(selectedBorders !== []){
         highlightBorders(selectedBorders)
       }
     }, [selectedBorders])
@@ -48,8 +43,8 @@ const GameMap = ({players}) => {
     useEffect(() => {
       if(gameState){                    
         territoryInit();
+        setSelectedBorders(getBorders(selectedTerritory.id))
       }
-  // }, [players])
     }, [gameState])
 
 
@@ -66,7 +61,8 @@ const GameMap = ({players}) => {
             'name': gameState.GameState[i].name,
             'id': gameState.GameState[i].id,
             'occupier': players[Math.floor(Math.random()*noOfPlayers)],
-            'troops': 0
+            'troops': 0,
+            'borders': gameState.GameState[i].borders
           };
           tempState.GameState.push(tempTer)
         }
@@ -74,10 +70,10 @@ const GameMap = ({players}) => {
         setGameState(tempState);
         troopsInit();
       }
-      // else{
-      //   console.log('swing and a miss')
-      //   territoryInit();
-      // }
+      else{
+        console.log('swing and a miss')
+        territoryInit();
+      }
     }
 
     const troopsInit = () => {
@@ -220,9 +216,6 @@ const GameMap = ({players}) => {
       <div>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div className='selected-terittory-data'>
-            <h5>Selected: {currentTerritoy.territory}</h5>
-            <p>occupier: {currentTerritoy.occupier}</p>
-            <p>troops: {currentTerritoy.troops}</p>
           </div>
       </div>
   );
