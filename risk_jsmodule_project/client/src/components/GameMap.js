@@ -114,14 +114,14 @@ const GameMap = ({players}) => {
             for(let territory of gameState.GameState){
               if(border === territory.name){
                 let territoryElement = document.querySelector(`[aria-label="${territory.name}"]`)
-                if(territoryElement.style.fill === "coral"){
-                  territoryElement.setAttribute("style", "fill: #CD5B45")
-                }
+    
+                if(territoryElement.style.fill === "coral"){                 
+                    territoryElement.setAttribute("style", "fill: #CD5B45")
+                  }
+                                
                 if(territoryElement.style.fill === "lightblue"){
-                  territoryElement.setAttribute("style", "fill: cornflowerblue")
-                }
-
-                // territoryElement.setAttribute("style", "fill: lightgoldenrodyellow")
+                        territoryElement.setAttribute("style", "fill: cornflowerblue")
+                  }
               }
             }
           }
