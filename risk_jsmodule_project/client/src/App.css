@@ -2,6 +2,7 @@
   text-align:center;
 }
 
+
 .leaderboard  { 
   text-align: center;
   display: flex;
@@ -225,6 +226,7 @@ path:focus{
 
 .player1 {
   fill: green;
+  border-radius: 5%;
   border: solid #b5a642 10px;
   margin:20px;
   font-size: larger;
