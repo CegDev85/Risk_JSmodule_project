@@ -33,7 +33,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
                 let playerTerCount = gameState.GameState.filter(t => t.occupier == players[i])
                 console.log(`${players.name} controlls ${playerTerCount.length}/${totalTerittories}`)
                 if (playerTerCount.length === totalTerittories){
-                    console.log(`${playerTurn[i].name} has won!!!!!!`)
+                    console.log(`${playerTurn.name} has won!!!!!!`)
                     setWinnerTrigger(true);
                     break;
                 }
