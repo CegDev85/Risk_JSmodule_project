@@ -24,11 +24,13 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
             setUIColour(playerTurn);
         }
         // Win condition??
+        console.log(`ROUND${rounds}`);
         if(rounds > 2){
         let totalTerittories = gameState.GameState.length;
-            for(let i=0; i<playerTurn.length; i++){
-                let playerTerCount = gameState.GameState.filter(t => t.occupier == playerTurn[i])
-                if (playerTerCount === totalTerittories){
+            for(let i=0; i<players.length; i++){
+                let playerTerCount = gameState.GameState.filter(t => t.occupier == players[i])
+                console.log(`${players.name} controlls ${playerTerCount.length}/${totalTerittories}`)
+                if (playerTerCount.length === totalTerittories){
                     console.log(`${playerTurn[i]} has won!!!!!!`)
                     break;
                 }
@@ -253,19 +255,19 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
         var uiElement = (document.getElementsByClassName("user-interface"))
     
 
-        if(playerTurn == players[0]){
-            console.log(uiElement[0])
-            uiElement[0].setAttribute("style", "border-color: coral")
-            console.log(uiElement[0])
+        // if(playerTurn == players[0]){
+        //     console.log(uiElement[0])
+        //     uiElement[0].setAttribute("style", "border-color: coral")
+        //     console.log(uiElement[0])
 
-        }
-        if(playerTurn == players[1]){
-            console.log(uiElement[0])
-            uiElement[0].setAttribute("style", "border-color: lightblue")
-            console.log(uiElement[0])
+        // }
+        // if(playerTurn == players[1]){
+        //     console.log(uiElement[0])
+        //     uiElement[0].setAttribute("style", "border-color: lightblue")
+        //     console.log(uiElement[0])
             
             
-        }
+        // }
 
     }
 
