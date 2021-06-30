@@ -47,14 +47,14 @@
     "name": "Washington, DC",
     "occupier": "empty",
     "troops": 0,
-    "borders": ["New Mexico", "Oklahoma", "Utah", "Wyoming", "Arizona", "Kansas", "Nebraska"]
+    "borders": ["Maryland", "Virginia", "West Virginia", "Pennsylvania", "Delaware"]
     },
     {
     "id": "us-de",
     "name": "Delaware",
     "occupier": "empty",
     "troops": 0,
-    "borders": ["New York", "Rhode Island", "Massachusetts"]
+    "borders": ["New York", "Rhode Island", "Massachusetts", "Washington, DC"]
     },
     {
     "id": "us-fl",
@@ -131,7 +131,7 @@
     "name": "Maryland",
     "occupier": "empty",
     "troops": 0,
-    "borders": ["Virginia", "West Virginia", "Delaware", "Pennsylvania"]
+    "borders": ["Virginia", "West Virginia", "Delaware", "Pennsylvania", "Washington, DC"]
     },
     {
     "id": "us-me",
@@ -180,7 +180,7 @@
     "name": "North Carolina",
     "occupier": "empty",
     "troops": 0,
-    "borders": ["Tennessee", "Virginia", "Georgia", "South Carolina"]
+    "borders": ["Tennessee", "Virginia", "Georgia", "South Carolina", "Washington, DC"]
     },
     {
     "id": "us-nd",
@@ -257,7 +257,7 @@
     "name": "Pennsylvania",
     "occupier": "empty",
     "troops": 0,
-    "borders": ["New York", "Ohio", "West Virginia", "Delaware", "Maryland", "New Jersey"]
+    "borders": ["New York", "Ohio", "West Virginia", "Delaware", "Maryland", "New Jersey", "Washington, DC"]
     },
     {
     "id": "us-ri",
@@ -334,7 +334,7 @@
     "name": "West Virginia",
     "occupier": "empty",
     "troops": 0,
-    "borders": ["Pennsylvania", "Virginia", "Kentucky", "Maryland", "Ohio"]
+    "borders": ["Pennsylvania", "Virginia", "Kentucky", "Maryland", "Ohio", "Washington, DC"]
     },
     {
     "id": "us-wy",

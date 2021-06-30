@@ -255,19 +255,19 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
         var uiElement = (document.getElementsByClassName("user-interface"))
     
 
-        // if(playerTurn == players[0]){
+        if(playerTurn == players[0]){
         //     console.log(uiElement[0])
-        //     uiElement[0].setAttribute("style", "border-color: coral")
+            uiElement[0].setAttribute("style", "border-color: coral")
         //     console.log(uiElement[0])
 
-        // }
-        // if(playerTurn == players[1]){
+        }
+        if(playerTurn == players[1]){
         //     console.log(uiElement[0])
-        //     uiElement[0].setAttribute("style", "border-color: lightblue")
+            uiElement[0].setAttribute("style", "border-color: lightblue")
         //     console.log(uiElement[0])
             
             
-        // }
+        }
 
     }
 
