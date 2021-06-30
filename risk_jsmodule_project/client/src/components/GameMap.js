@@ -90,6 +90,9 @@ const GameMap = ({players}) => {
     const territoryColours = function(){
       if(gameState != null){
         for(let territory of gameState.GameState){
+
+
+          //initial colours
           if(territory.occupier === players[0]){
             const territoryElement = document.querySelector(`[name="${territory.name}"]`)
             territoryElement.setAttribute("style", "fill: coral")
@@ -97,17 +100,28 @@ const GameMap = ({players}) => {
             const territoryElement = document.querySelector(`[name="${territory.name}"]`)
             territoryElement.setAttribute("style", "fill: lightblue")
           }
+
+          //selected territory
           if(currentTerritory != 'None'){
           if (territory.name === currentTerritory.name){
             const territoryElement = document.querySelector(`[name="${territory.name}"]`)
             territoryElement.setAttribute("style", "fill: hotpink")
           }
+
+          //border colours
           const borders = currentTerritory.borders
           for(let border of borders){
             for(let territory of gameState.GameState){
               if(border === territory.name){
                 let territoryElement = document.querySelector(`[aria-label="${territory.name}"]`)
-                territoryElement.setAttribute("style", "fill: lightgoldenrodyellow")
+                if(territoryElement.style.fill === "coral"){
+                  territoryElement.setAttribute("style", "fill: #CD5B45")
+                }
+                if(territoryElement.style.fill === "lightblue"){
+                  territoryElement.setAttribute("style", "fill: cornflowerblue")
+                }
+
+                // territoryElement.setAttribute("style", "fill: lightgoldenrodyellow")
               }
             }
           }
