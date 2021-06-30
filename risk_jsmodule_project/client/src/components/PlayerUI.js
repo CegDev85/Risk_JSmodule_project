@@ -10,6 +10,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
     const [rounds, setRounds] = useState(-1);
     const [targetTerritory, setTargetTerritory] = useState({"territory": null, "isFriendly": false})
     const [quantitySelectorTrigger, setQuantitySelectorTrigger] = useState(false);
+    const [winnerTrigger, setWinnerTrigger] = useState(false);
     const [battleSummaryTrigger, setBattleSummaryTrigger] = useState(false);
     const [battleReport, setBattleReport] = useState({});
 
@@ -23,7 +24,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
             calcReinforcements(playerTurn);
             setUIColour(playerTurn);
         }
-        // Win condition??
+        // Win condition
         console.log(`ROUND${rounds}`);
         if(rounds > 2){
         let totalTerittories = gameState.GameState.length;
@@ -32,6 +33,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
                 console.log(`${players.name} controlls ${playerTerCount.length}/${totalTerittories}`)
                 if (playerTerCount.length === totalTerittories){
                     console.log(`${playerTurn[i]} has won!!!!!!`)
+                    setWinnerTrigger(true);
                     break;
                 }
             }
@@ -291,6 +293,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
         <div className='input-handler'>
             <QuantSelector trigger={quantitySelectorTrigger} setTrigger={setQuantitySelectorTrigger} target={targetTerritory} commitTroops={commitTroops} currentTerritory={currentTerritory}/>
             <BattleSummary trigger={battleSummaryTrigger} setTrigger={setBattleSummaryTrigger} battleReport={battleReport}/>
+            <WinnerBanner trigger={winnerTrigger} setTrigger={setWinnerTrigger} winner={playerTurn}/>
         </div>
         </>
     )
