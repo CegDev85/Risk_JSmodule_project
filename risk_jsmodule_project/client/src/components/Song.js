@@ -10,7 +10,6 @@ export default class extends Component {
     return (
       <div>
         <audio className="audio-element">
-          {/* <source src="https://assets.coderrocketfuel.com/pomodoro-times-up.mp3"></source> */}
           <source src="http://sc3c-sjc.1.fm:7806"></source>
         </audio>
       </div>

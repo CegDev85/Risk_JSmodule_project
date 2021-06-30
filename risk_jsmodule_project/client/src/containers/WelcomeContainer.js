@@ -22,8 +22,6 @@ const WelcomeContainer = ({addPlayers}) => {
                 <CountryContainer />
             </div>
             </div>
-            
-        
     )
 }
 
