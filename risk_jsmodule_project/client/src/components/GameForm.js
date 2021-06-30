@@ -79,7 +79,7 @@ const GameForm = ({addPlayersToState}) => {
             <br></br>
             <br></br>
             <form onSubmit={handleSubmit} method="post" >
-                <label className="player1" htmlFor="player1">Player 1:    </label>
+                <label className="player1label" htmlFor="player1">Player 1:    </label>
                 <input className="player1input" type="text" id="player1" name="player1" placeholder="Name your Army"></input>    
                 <label className="player2" htmlFor="player2">Player 2:    </label>
                 <input className="player2input" type="text" id="player2" name="player2" placeholder="Name your Army"></input>
