@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import QuantSelector from './QuantSelector';
 import BattleSummary from './BattleSummary';
 
-const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, changeOccupier}) => {
+const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, changeOccupier, updateGameState}) => {
 
     const [playerTurn, setPlayerTurn] = useState(null);
     const [gameRunning, SetGameRunning] = useState(false);
@@ -140,6 +140,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
                 console.log('You have used all your reinforcements');
             }
         }
+        
     }
 
     const commitTroops = (noTroops) => {

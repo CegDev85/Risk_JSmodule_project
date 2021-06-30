@@ -12,9 +12,11 @@ const GameMap = ({players}) => {
     const [currentTerritory, setCurrentTerritory] = useState('None'); //Finds game-state equivalent of selectedTerritory
     // new state added to hold data on 'layers' at a high enough level that they can be manipulated.  ID matches that from VectorMap JSON
     const [gameState, setGameState] = useState(null);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
       setGameState({...GameState})
+      setLoaded(true);
       console.log('Look players!')
       console.log(players);
     },[])
@@ -32,8 +34,19 @@ const GameMap = ({players}) => {
     }, [gameState])
 
     useEffect(() => [
-      territoryColours()
+      territoryColours()      
     ], [gameState, currentTerritory])
+
+    useEffect(() => {
+      if(loaded){
+        territoryDetailsInit()
+      }
+    }, [loaded])
+
+    useEffect(() => {
+      updateTerritoryDetails()
+      console.log("triggered")
+    }, )
 
 
     const territoryInit = () => {
@@ -130,6 +143,33 @@ const GameMap = ({players}) => {
       }
     }
 
+    const territoryDetailsInit = function(){
+      
+      if(gameState != null){
+        for(let territory of gameState.GameState){
+          const territoryElement = document.querySelector(`[name="${territory.name}"]`)
+          territoryElement.insertAdjacentHTML('afterbegin', `<title id="title-${territory.name}">${territory.name}: ${territory.troops} troops</title>`)
+        }
+      }
+    }
+
+    const updateTerritoryDetails = function(){
+
+      console.log("sajhjsdjsahd")
+      
+      if(gameState != null){
+        for(let territory of gameState.GameState){
+          const territoryElementTitle = document.querySelector(`[id = "title-${territory.name}"]`)
+          territoryElementTitle.textContent = `${territory.name}: ${territory.troops} troops`
+          
+        }
+      }
+    }
+
+    
+
+    
+
     const layerProps = {
       onClick: ({ target }) => {
         setSelectedTerritory({
@@ -146,8 +186,10 @@ const GameMap = ({players}) => {
     const incrementTroops = (n, territory) => {
       let tempTer = territory;
       tempTer.troops += n;
-      gameState.GameState.splice(gameState.GameState.indexOf(territory), 1);
-      gameState.GameState.push(tempTer);
+      const copyGameState = {...gameState}
+      copyGameState.GameState.splice(gameState.GameState.indexOf(territory), 1);
+      copyGameState.GameState.push(tempTer);
+      setGameState(copyGameState)
     }
 
     const changeOccupier = (winner, territory) => {
@@ -157,12 +199,16 @@ const GameMap = ({players}) => {
       gameState.GameState.push(tempTer);
     }
 
+    const updateGameState = function(gameState){
+      setGameState(gameState)
+    }
+
 
     return (
       <div className='playable-area'>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div>
-            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops} changeOccupier={changeOccupier}/>
+            <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops} changeOccupier={changeOccupier} updateGameState={updateGameState}/>
             </div>
             </div>
       );
