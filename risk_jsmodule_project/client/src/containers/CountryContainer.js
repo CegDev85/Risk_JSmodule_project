@@ -24,7 +24,7 @@ const CountryContainer = () => {
   
 
     return (
-        <div className="main-container">
+        <div className="country-container">
             {/* <CountryList countries={countries}/> */}
             {/* {selectedCountry ? <CountryDetail country={selectedCountry}/> : null } */}
             <CountrySelect countries={countries} onCountrySelect={onCountrySelect} />      

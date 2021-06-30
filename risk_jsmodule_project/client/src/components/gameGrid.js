@@ -8,7 +8,7 @@ const GameGrid = ({players}) => {
     return (
         <div className="gamegrid">
            
-            <h1>PLAN YOUR ATTACK!</h1>
+            <h1>COMMAND YOUR ARMY!</h1>
             <GameMap players={players}/>
             
         </div>
