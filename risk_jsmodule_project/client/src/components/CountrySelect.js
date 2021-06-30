@@ -9,14 +9,14 @@ const CountrySelect = ({countries, onCountrySelect}) => {
 
 
     const countryOptions = countries.map((country, index) => {
-        return <option value={index} key={index}>{country.name}</option>
+        return<option value={index} key={index}>{country.name}</option>
     })
 
     return(
-        <div className="country-select">
+        <div >
             <div className="select">
-            <select onChange={handleChange}>
-                <option>Select a country to learn some facts</option>
+            <select className="slct" onChange={handleChange}>
+                <option>Select a country here and do a learn below</option>
                 {countryOptions}
             </select>
             </div>

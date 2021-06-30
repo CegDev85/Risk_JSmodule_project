@@ -3,7 +3,6 @@ import React from 'react'
 const ListItem = ({country, onCountryClick}) => {
 
     const handleClick = () => {
-        // console.log(`clicked on ${country.name}`)
         onCountryClick(country)
     }
 

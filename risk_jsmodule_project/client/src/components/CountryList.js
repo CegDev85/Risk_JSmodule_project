@@ -11,9 +11,9 @@ const CountryList = ({countries, onCountryClick}) => {
     })
 
     return (
-        <div>
+        <div className="country-items">
             <ul>
-                {countryItems}
+                <li>{countryItems}</li>
             </ul>
         </div>
         

@@ -32,7 +32,8 @@
     font-size: 38px;
     color: red;
     transform: rotate(-35deg);
-    padding: 10px;
+    padding: 2px;
+    border: solid red;
 }
 
 .close-summary{

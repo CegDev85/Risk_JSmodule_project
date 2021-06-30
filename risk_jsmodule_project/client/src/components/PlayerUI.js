@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import QuantSelector from './QuantSelector';
 import BattleSummary from './BattleSummary';
+import WinnerBanner from './WinnerBanner';
 
 const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, changeOccupier, updateGameState}) => {
 
@@ -10,6 +11,8 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
     const [rounds, setRounds] = useState(-1);
     const [targetTerritory, setTargetTerritory] = useState({"territory": null, "isFriendly": false})
     const [quantitySelectorTrigger, setQuantitySelectorTrigger] = useState(false);
+    const [winnerTrigger, setWinnerTrigger] = useState(false);
+    const [winner, setWinner] = useState(false);
     const [battleSummaryTrigger, setBattleSummaryTrigger] = useState(false);
     const [battleReport, setBattleReport] = useState({});
 
@@ -23,13 +26,17 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
             calcReinforcements(playerTurn);
             setUIColour(playerTurn);
         }
-        // Win condition??
+        // Win condition
+        console.log(`ROUND${rounds}`);
         if(rounds > 2){
         let totalTerittories = gameState.GameState.length;
-            for(let i=0; i<playerTurn.length; i++){
-                let playerTerCount = gameState.GameState.filter(t => t.occupier == playerTurn[i])
-                if (playerTerCount === totalTerittories){
-                    console.log(`${playerTurn[i]} has won!!!!!!`)
+            for(let i=0; i<players.length; i++){
+                let playerTerCount = gameState.GameState.filter(t => t.occupier == players[i])
+                console.log(`${players.name} controlls ${playerTerCount.length}/${totalTerittories}`)
+                if (playerTerCount.length === totalTerittories){
+                    setWinner(players[i]);
+                    console.log(`${players[i].name} has won!!!!!!`)
+                    setWinnerTrigger(true);
                     break;
                 }
             }
@@ -255,15 +262,15 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
     
 
         if(playerTurn == players[0]){
-            console.log(uiElement[0])
+        //     console.log(uiElement[0])
             uiElement[0].setAttribute("style", "border-color: coral")
-            console.log(uiElement[0])
+        //     console.log(uiElement[0])
 
         }
         if(playerTurn == players[1]){
-            console.log(uiElement[0])
+        //     console.log(uiElement[0])
             uiElement[0].setAttribute("style", "border-color: lightblue")
-            console.log(uiElement[0])
+        //     console.log(uiElement[0])
             
             
         }
@@ -290,6 +297,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
         <div className='input-handler'>
             <QuantSelector trigger={quantitySelectorTrigger} setTrigger={setQuantitySelectorTrigger} target={targetTerritory} commitTroops={commitTroops} currentTerritory={currentTerritory}/>
             <BattleSummary trigger={battleSummaryTrigger} setTrigger={setBattleSummaryTrigger} battleReport={battleReport}/>
+            {/* <WinnerBanner trigger={winnerTrigger} setTrigger={setWinnerTrigger} winner={winner}/> */}
         </div>
         </>
     )
