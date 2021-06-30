@@ -12,6 +12,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
     const [targetTerritory, setTargetTerritory] = useState({"territory": null, "isFriendly": false})
     const [quantitySelectorTrigger, setQuantitySelectorTrigger] = useState(false);
     const [winnerTrigger, setWinnerTrigger] = useState(false);
+    const [winner, setWinner] = useState(false);
     const [battleSummaryTrigger, setBattleSummaryTrigger] = useState(false);
     const [battleReport, setBattleReport] = useState({});
 
@@ -33,7 +34,8 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
                 let playerTerCount = gameState.GameState.filter(t => t.occupier == players[i])
                 console.log(`${players.name} controlls ${playerTerCount.length}/${totalTerittories}`)
                 if (playerTerCount.length === totalTerittories){
-                    console.log(`${playerTurn.name} has won!!!!!!`)
+                    setWinner(players[i]);
+                    console.log(`${players[i].name} has won!!!!!!`)
                     setWinnerTrigger(true);
                     break;
                 }
@@ -294,7 +296,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
         <div className='input-handler'>
             <QuantSelector trigger={quantitySelectorTrigger} setTrigger={setQuantitySelectorTrigger} target={targetTerritory} commitTroops={commitTroops} currentTerritory={currentTerritory}/>
             <BattleSummary trigger={battleSummaryTrigger} setTrigger={setBattleSummaryTrigger} battleReport={battleReport}/>
-            <WinnerBanner trigger={winnerTrigger} setTrigger={setWinnerTrigger} winner={playerTurn}/>
+            {/* <WinnerBanner trigger={winnerTrigger} setTrigger={setWinnerTrigger} winner={winner}/> */}
         </div>
         </>
     )
