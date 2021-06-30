@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import QuantSelector from './QuantSelector';
 import BattleSummary from './BattleSummary';
+import WinnerBanner from './WinnerBanner';
 
 const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, changeOccupier}) => {
 
@@ -32,7 +33,7 @@ const PlayerUI = ({currentTerritory, gameState, players, incrementTroops, change
                 let playerTerCount = gameState.GameState.filter(t => t.occupier == players[i])
                 console.log(`${players.name} controlls ${playerTerCount.length}/${totalTerittories}`)
                 if (playerTerCount.length === totalTerittories){
-                    console.log(`${playerTurn[i]} has won!!!!!!`)
+                    console.log(`${playerTurn[i].name} has won!!!!!!`)
                     setWinnerTrigger(true);
                     break;
                 }
