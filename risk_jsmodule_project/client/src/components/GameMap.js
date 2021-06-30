@@ -45,7 +45,6 @@ const GameMap = ({players}) => {
 
     useEffect(() => {
       updateTerritoryDetails()
-      console.log("triggered")
     }, )
 
 
@@ -148,19 +147,18 @@ const GameMap = ({players}) => {
       if(gameState != null){
         for(let territory of gameState.GameState){
           const territoryElement = document.querySelector(`[name="${territory.name}"]`)
-          territoryElement.insertAdjacentHTML('afterbegin', `<title id="title-${territory.name}">${territory.name}: ${territory.troops} troops</title>`)
+          territoryElement.insertAdjacentHTML('afterbegin', `<title id="title-${territory.name}">${territory.name}</title>`)
+          // territoryElement.insertAdjacentHTML('afterbegin', `<title id="title-${territory.name}">${territory.name}: ${territory.troops} troops</title>`)
         }
       }
     }
 
     const updateTerritoryDetails = function(){
-
-      console.log("sajhjsdjsahd")
       
       if(gameState != null){
         for(let territory of gameState.GameState){
-          const territoryElementTitle = document.querySelector(`[id = "title-${territory.name}"]`)
-          territoryElementTitle.textContent = `${territory.name}: ${territory.troops} troops`
+          // const territoryElementTitle = document.querySelector(`[id = "title-${territory.name}"]`)
+          // territoryElementTitle.textContent = `${territory.name}: ${territory.troops} troops`
           
         }
       }
