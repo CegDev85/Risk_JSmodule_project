@@ -2,6 +2,7 @@
   text-align:center;
 }
 
+
 .leaderboard  { 
   text-align: center;
   display: flex;
@@ -148,7 +149,7 @@ path{
 }
 
 path:hover{
-  fill:hotpink;
+  fill:hotpink !important;
 }
 
 
@@ -174,8 +175,21 @@ path:focus{
   align-items: center;
   background-image: url('./resources/wood.jpeg');
   border-radius: 45%;
+  border: solid 10px;
+  border-color: #b5a642;
+  margin:20px;
+  color: white;
+}
+
+.ui-end-turn{
+  border-radius: 50%;
+}
+
+.player1 {
+  fill: green;
+  border-radius: 5%;
   border: solid #b5a642 10px;
-  margin:20px;;
+  margin:20px;
   font-size: larger;
   color: rgb(255, 255, 255);
   font-family: Kalamimport;

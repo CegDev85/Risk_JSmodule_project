@@ -11,7 +11,6 @@ const GameMap = ({players}) => {
     const [selectedTerritory, setSelectedTerritory] = React.useState('None');
     const [currentTerritory, setCurrentTerritory] = useState('None'); //Finds game-state equivalent of selectedTerritory
     // new state added to hold data on 'layers' at a high enough level that they can be manipulated.  ID matches that from VectorMap JSON
-    const [selectedBorders, setSelectedBorders] = useState([])
     const [gameState, setGameState] = useState(null);
 
     useEffect(() => {
@@ -26,26 +25,15 @@ const GameMap = ({players}) => {
       }
     }, [selectedTerritory])
 
-    //Highlight the bordering states
-    useEffect(() => {
-      if(selectedBorders !== []){
-        highlightBorders(selectedBorders)
-      }
-    }, [selectedBorders])
-
-    //Highlight occupied states
-    // useEffect(() => {
-    //   if(selectedTerritory !== 'None'){
-    //     console.log("bingo!")
-    //     highlightStates()
-    //   }
-    // }, [selectedTerritory])
     useEffect(() => {
       if(gameState){                    
         territoryInit();
-        setSelectedBorders(getBorders(selectedTerritory.id))
       }
     }, [gameState])
+
+    useEffect(() => [
+      territoryColours()
+    ], [gameState, currentTerritory])
 
 
     const territoryInit = () => {
@@ -99,7 +87,35 @@ const GameMap = ({players}) => {
       setGameState(distributionDone);
     }
 
-  
+    const territoryColours = function(){
+      if(gameState != null){
+        for(let territory of gameState.GameState){
+          if(territory.occupier === players[0]){
+            const territoryElement = document.querySelector(`[name="${territory.name}"]`)
+            territoryElement.setAttribute("style", "fill: coral")
+          } else if (territory.occupier === players[1]){
+            const territoryElement = document.querySelector(`[name="${territory.name}"]`)
+            territoryElement.setAttribute("style", "fill: lightblue")
+          }
+          if(currentTerritory != 'None'){
+          if (territory.name === currentTerritory.name){
+            const territoryElement = document.querySelector(`[name="${territory.name}"]`)
+            territoryElement.setAttribute("style", "fill: hotpink")
+          }
+          const borders = currentTerritory.borders
+          for(let border of borders){
+            for(let territory of gameState.GameState){
+              if(border === territory.name){
+                let territoryElement = document.querySelector(`[aria-label="${territory.name}"]`)
+                territoryElement.setAttribute("style", "fill: lightgoldenrodyellow")
+              }
+            }
+          }
+        }
+        } 
+      }
+    }
+
     const layerProps = {
       onClick: ({ target }) => {
         setSelectedTerritory({
@@ -109,70 +125,10 @@ const GameMap = ({players}) => {
           // "borders": getBorders(target.attributes.id.value),
           "id": target.attributes.id.value
         })
-        clearHighlights()
       },
     };
 
-    let bordersIdArray = []
-
-    const getBorders = function(id) {
-
-      for(let state of gameState.GameState){
-        if(id === state.id){
-          let borderNames = state.borders
-          for(let borderName of borderNames){
-            for(let state of gameState.GameState){
-              if (state.name === borderName){ 
-                bordersIdArray.push(state.id)
-              }
-            }
-          }
-        }
-      }
-      return bordersIdArray
-    }
-
     
-
-    // const highlightStates = function(){
-
-    //   for(let state of gameState.GameState){
-    //     console.log(state.occupier)
-    //     if(state.occupier === "Player 1"){
-    //       const newID = "Player 1"
-    //       var style = document.createElement('style');
-    //       style.setAttribute('id', newID)
-    //       style.innerHTML = `#${newID} { fill: green;
-    //     }`;
-          
-    //     }
-    //   }
-
-    // }
-   
-    const highlightBorders = function(bordersIdArray){        
-      
-      //Highlights surrounding territories in hotpink
-      for(let borderId of bordersIdArray){
-        const newID = borderId
-        var style = document.createElement('style');
-        style.setAttribute('id', newID)
-        style.innerHTML = `#${newID} { fill: hotpink;
-        }`;
-        document.head.appendChild(style);
-      }
-    }
-
-    //Clears existing highlights when new US state is clicked
-    const clearHighlights = function(){
-      for(let borderId of selectedBorders){
-        var element = document.getElementById(borderId);
-        element.parentNode.removeChild(element);
-      }
-
-    }
-
-
     const incrementTroops = (n, territory) => {
       let tempTer = territory;
       tempTer.troops += n;
@@ -189,7 +145,7 @@ const GameMap = ({players}) => {
 
 
     return (
-      <div>
+      <div className='playable-area'>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div>
             <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops} changeOccupier={changeOccupier}/>
