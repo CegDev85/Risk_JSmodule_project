@@ -189,7 +189,7 @@ const GameMap = ({players}) => {
 
 
     return (
-      <div>
+      <div className='playable-area'>
         <VectorMap {...usa} layerProps={layerProps} className='vector_map'/>
           <div>
             <PlayerUI currentTerritory={currentTerritory} gameState={gameState} players={players} incrementTroops={incrementTroops} changeOccupier={changeOccupier}/>

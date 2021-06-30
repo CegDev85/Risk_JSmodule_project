@@ -2,6 +2,7 @@
   text-align:center;
 }
 
+
 .leaderboard  { 
   text-align: center;
   display: flex;
@@ -212,7 +213,7 @@ path:focus{
   align-items: center;
   /* background-color: burlywood; */
   background-image: url('./resources/wood.jpeg');
-  border-radius: 45%;
+  border-radius: 5%;
   border: solid #b5a642 10px;
   margin:20px;;
   font-size: larger;
