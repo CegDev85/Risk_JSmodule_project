@@ -104,14 +104,14 @@ const GameMap = ({players}) => {
         for(let territory of gameState.GameState){
 
 
-          //initial colours
-          if(territory.occupier === players[0]){
-            const territoryElement = document.querySelector(`[name="${territory.name}"]`)
-            territoryElement.setAttribute("style", "fill: coral")
-          } else if (territory.occupier === players[1]){
-            const territoryElement = document.querySelector(`[name="${territory.name}"]`)
-            territoryElement.setAttribute("style", "fill: lightblue")
-          }
+          // //initial colours
+          // if(territory.occupier === players[0]){
+          //   const territoryElement = document.querySelector(`[name="${territory.name}"]`)
+          //   territoryElement.setAttribute("style", "fill: coral")
+          // } else if (territory.occupier === players[1]){
+          //   const territoryElement = document.querySelector(`[name="${territory.name}"]`)
+          //   territoryElement.setAttribute("style", "fill: lightblue")
+          // }
 
           //selected territory
           if(currentTerritory != 'None'){
@@ -150,6 +150,18 @@ const GameMap = ({players}) => {
           territoryElement.insertAdjacentHTML('afterbegin', `<title id="title-${territory.name}">${territory.name}</title>`)
           // territoryElement.insertAdjacentHTML('afterbegin', `<title id="title-${territory.name}">${territory.name}: ${territory.troops} troops</title>`)
         }
+      }
+
+      //initial colours
+      for(let territory of gameState.GameState){
+        if(territory.occupier === players[0]){
+        const territoryElement = document.querySelector(`[name="${territory.name}"]`)
+        territoryElement.setAttribute("style", "fill: coral")
+      } else if (territory.occupier === players[1]){
+        const territoryElement = document.querySelector(`[name="${territory.name}"]`)
+        territoryElement.setAttribute("style", "fill: lightblue")
+      }
+      
       }
     }
 
